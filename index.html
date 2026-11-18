@@ -1,0 +1,4005 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fakultas Teknik Universitas Negeri Gorontalo</title>
+  <meta name="description" content="Website resmi Fakultas Teknik Universitas Negeri Gorontalo">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+:root {
+  --navy: #041c3b;
+  --navy-2: #062a57;
+  --blue: #0b5ed7;
+  --blue-soft: #eaf2ff;
+  --gold: #f5b301;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --bg: #f4f7fb;
+  --white: #ffffff;
+  --border: #e5e7eb;
+  --shadow: 0 10px 30px rgba(4, 28, 59, 0.08);
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+  background: #fff;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { margin: 0; padding: 0; list-style: none; }
+button { font: inherit; }
+
+.container {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+/* Topbar */
+.topbar {
+  background: var(--navy);
+  color: #dbe7ff;
+  font-size: 0.85rem;
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0;
+}
+.topbar-left, .topbar-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.1rem;
+  align-items: center;
+}
+.topbar a:hover { color: #fff; }
+.topbar i { margin-right: 0.35rem; color: #9ec5ff; }
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 74px;
+}
+.brand { display: flex; align-items: center; gap: 0.75rem; }
+.brand-mark {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: #fff; font-weight: 800; letter-spacing: 0.5px;
+}
+.brand-mark.small { width: 40px; height: 40px; border-radius: 8px; font-size: 0.95rem; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-text strong { color: var(--navy); font-size: 1rem; }
+.brand-text small { color: var(--muted); font-size: 0.78rem; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column; gap: 4px;
+  background: none; border: 1px solid var(--border); border-radius: 8px;
+  padding: 0.55rem; cursor: pointer;
+}
+.nav-toggle span { width: 22px; height: 2px; background: var(--navy); border-radius: 2px; }
+
+.nav-list { display: flex; align-items: center; gap: 0.2rem; }
+.nav-link {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  padding: 0.7rem 0.85rem; border-radius: 8px;
+  color: #243244; font-weight: 600; font-size: 0.95rem;
+  background: none; border: none; cursor: pointer;
+}
+.nav-link:hover, .nav-link.active { color: var(--blue); background: #f0f6ff; }
+.nav-link i { font-size: 0.7rem; color: var(--muted); }
+
+.dropdown { position: relative; }
+.dropdown-menu {
+  position: absolute; top: calc(100% + 6px); left: 0;
+  min-width: 240px; background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: var(--shadow); padding: 0.4rem;
+  opacity: 0; visibility: hidden; transform: translateY(6px);
+  transition: 0.18s ease;
+}
+.dropdown-menu a {
+  display: block; padding: 0.55rem 0.7rem; border-radius: 8px; color: #334155; font-size: 0.93rem;
+}
+.dropdown-menu a:hover { background: #f3f7ff; color: var(--blue); }
+@media (hover: hover) {
+  .dropdown:hover > .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+}
+.dropdown.open > .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+/* Hero */
+.hero { position: relative; height: min(78vh, 720px); min-height: 520px; overflow: hidden; background: var(--navy); }
+.hero-slider, .slide { height: 100%; }
+.slide {
+  position: absolute; inset: 0;
+  background: var(--bg); background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 0.7s ease;
+  display: flex; align-items: center;
+}
+.slide.active { opacity: 1; }
+.slide::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.08), transparent 35%); }
+.slide-content { position: relative; z-index: 1; color: #fff; max-width: 760px; }
+.eyebrow { text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; font-size: 0.85rem; color: #ffd36a; margin: 0 0 0.5rem; }
+.slide-content h1 { font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.15; margin: 0 0 1rem; }
+.slide-content p { font-size: 1.1rem; color: #e6efff; margin: 0 0 1.5rem; max-width: 680px; }
+.hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.8rem 1.15rem; border-radius: 10px; font-weight: 700; border: 2px solid transparent;
+  transition: 0.2s ease; cursor: pointer;
+}
+.btn-primary { background: var(--gold); color: #1a1a1a; }
+.btn-primary:hover { filter: brightness(1.03); transform: translateY(-1px); }
+.btn-outline { border-color: rgba(255,255,255,0.7); color: #fff; }
+.btn-outline:hover { background: rgba(255,255,255,0.12); }
+.btn-sm { padding: 0.6rem 0.9rem; font-size: 0.92rem; }
+
+.hero-control {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%; border: none;
+  background: rgba(255,255,255,0.18); color: #fff; cursor: pointer; z-index: 2;
+}
+.hero-control:hover { background: rgba(255,255,255,0.3); }
+.hero-control.prev { left: 1rem; }
+.hero-control.next { right: 1rem; }
+.hero-dots {
+  position: absolute; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 0.5rem; z-index: 2;
+}
+.hero-dots button {
+  width: 10px; height: 10px; border-radius: 999px; border: none;
+  background: rgba(255,255,255,0.45); cursor: pointer; padding: 0;
+}
+.hero-dots button.active { width: 26px; background: #fff; }
+
+/* Vision & Stats */
+.vision-stats { background: var(--navy); color: #fff; padding: 3.5rem 0; }
+.vision-box { text-align: center; max-width: 980px; margin: 0 auto 2rem; }
+.vision-box h2 { margin: 0 0 0.5rem; font-size: 1.3rem; letter-spacing: 1px; color: #cfe2ff; }
+.vision-box p { margin: 0; font-size: clamp(1.05rem, 2vw, 1.4rem); font-weight: 600; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.stat-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; padding: 1.3rem; text-align: center;
+}
+.stat-card i { font-size: 1.8rem; color: var(--gold); margin-bottom: 0.4rem; }
+.stat-value { font-size: 2rem; font-weight: 800; line-height: 1.1; }
+.stat-label { color: #d7e6ff; font-weight: 500; }
+
+/* Sections */
+.section { padding: 4.5rem 0; }
+.section.alt { background: var(--bg); }
+.section-head { margin-bottom: 1.8rem; }
+.section-head.center { text-align: center; max-width: 720px; margin: 0 auto 2rem; }
+.section-head h2 { font-size: clamp(1.7rem, 2.5vw, 2.2rem); margin: 0 0 0.4rem; color: var(--navy); }
+.section-head p { margin: 0; color: var(--muted); }
+
+/* News */
+.news-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+.news-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; box-shadow: 0 4px 14px rgba(16,24,40,0.04);
+  display: flex; flex-direction: column;
+}
+.news-thumb { height: 170px; }
+.thumb-a { background: linear-gradient(135deg, #2563eb, #60a5fa); }
+.thumb-b { background: linear-gradient(135deg, #0f766e, #2dd4bf); }
+.thumb-c { background: linear-gradient(135deg, #7c3aed, #c084fc); }
+.thumb-d { background: linear-gradient(135deg, #ea580c, #fbbf24); }
+.news-body { padding: 1rem 1rem 1.15rem; display: flex; flex-direction: column; flex: 1; }
+.news-meta { display: flex; flex-wrap: wrap; gap: 0.7rem 1rem; color: var(--muted); font-size: 0.82rem; margin-bottom: 0.5rem; }
+.news-meta i { color: var(--blue); margin-right: 0.25rem; }
+.news-card h3 { font-size: 1rem; line-height: 1.4; margin: 0 0 0.5rem; color: #132238; }
+.news-card p { margin: 0 0 0.9rem; color: #4b5563; font-size: 0.93rem; }
+.read-more { margin-top: auto; color: var(--blue); font-weight: 700; font-size: 0.93rem; }
+.read-more:hover { text-decoration: underline; }
+
+/* Split / Programs */
+.split { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: start; }
+.split.reverse { grid-template-columns: 1.15fr 1fr; align-items: center; }
+.illustration-card, .campus-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); overflow: hidden;
+}
+.illustration-card { padding: 1.6rem; position: sticky; top: 95px; }
+.illustration-icon {
+  width: 64px; height: 64px; border-radius: 16px; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--blue-soft); color: var(--blue); font-size: 1.7rem; margin-bottom: 0.8rem;
+}
+.illustration-card h3 { margin: 0 0 0.4rem; color: var(--navy); }
+.illustration-card p { margin: 0 0 1rem; color: var(--muted); }
+.check-list li { display: flex; gap: 0.55rem; margin-bottom: 0.55rem; color: #374151; }
+.check-list i { color: #16a34a; margin-top: 0.25rem; }
+
+.program-list { display: grid; gap: 0.9rem; }
+.program-item { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.1rem; }
+.program-item h4 { margin: 0 0 0.45rem; color: var(--navy); font-size: 1.02rem; display: flex; align-items: center; gap: 0.5rem; }
+.program-item h4 i { color: var(--blue); }
+.program-item li { color: #374151; padding: 0.2rem 0; font-size: 0.95rem; }
+.badge {
+  display: inline-block; margin-left: 0.35rem; padding: 0.1rem 0.45rem; border-radius: 999px;
+  background: #fff4cc; color: #7a5a00; font-size: 0.75rem; font-weight: 700; vertical-align: middle;
+}
+.badge.success { background: #dcfce7; color: #166534; }
+.badge.muted { background: #e5e7eb; color: #374151; }
+
+/* Admission */
+.admission-list { display: grid; gap: 1rem; }
+.admission-item { display: flex; gap: 1rem; align-items: flex-start; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.1rem; }
+.admission-icon {
+  width: 44px; height: 44px; border-radius: 10px; flex: 0 0 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--blue-soft); color: var(--blue);
+}
+.admission-item h4 { margin: 0 0 0.2rem; color: var(--navy); }
+.admission-item p { margin: 0; color: #4b5563; font-size: 0.95rem; }
+.campus-visual {
+  height: 280px; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #0b3d91, #041c3b); color: rgba(255,255,255,0.9); font-size: 5rem;
+}
+.campus-info { padding: 1.3rem; }
+.campus-info h3 { margin: 0 0 0.4rem; color: var(--navy); }
+.campus-info p { margin: 0 0 1rem; color: var(--muted); }
+
+/* Leaders */
+.leaders-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+.leader-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 14px rgba(16,24,40,0.04); }
+.leader-photo {
+  height: 220px; display: flex; align-items: end; justify-content: start; padding: 1rem;
+  color: #fff; font-weight: 800; font-size: 1.4rem;
+}
+.leader-photo span { background: rgba(0,0,0,0.25); padding: 0.35rem 0.6rem; border-radius: 8px; }
+.photo-1 { background: linear-gradient(160deg, #1d4ed8, #0f172a); }
+.photo-2 { background: linear-gradient(160deg, #0f766e, #134e4a); }
+.photo-3 { background: linear-gradient(160deg, #7c3aed, #312e81); }
+.photo-4 { background: linear-gradient(160deg, #b45309, #78350f); }
+.leader-body { padding: 1rem; }
+.leader-body h3 { margin: 0 0 0.35rem; font-size: 1rem; color: #132238; line-height: 1.35; }
+.leader-body p { margin: 0; color: var(--muted); font-size: 0.93rem; }
+
+/* CTA / Footer */
+.cta-section { padding-top: 2rem; }
+.cta-box {
+  background: linear-gradient(135deg, var(--navy), var(--navy-2)); color: #fff;
+  border-radius: 18px; padding: 1.8rem; display: flex; align-items: center; justify-content: space-between; gap: 1.2rem;
+}
+.cta-box h2 { margin: 0 0 0.3rem; }
+.cta-box p { margin: 0; color: #d7e6ff; }
+.cta-links { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.cta-link {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+  color: #fff; padding: 0.7rem 0.95rem; border-radius: 10px; font-weight: 600;
+}
+.cta-link:hover { background: rgba(255,255,255,0.18); }
+.cta-link i { margin-right: 0.4rem; color: #ffd36a; }
+
+.footer { background: #031225; color: #cfe0fb; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem; padding: 3rem 0 2rem; }
+.footer-brand { display: flex; align-items: center; gap: 0.7rem; color: #fff; margin-bottom: 0.8rem; }
+.footer-col h4 { color: #fff; margin: 0 0 0.7rem; }
+.footer-col p { margin: 0 0 0.5rem; }
+.footer-col i { color: #8bbcff; margin-right: 0.4rem; }
+.footer-col ul li { margin-bottom: 0.45rem; }
+.footer-col a:hover { color: #fff; }
+.socials { display: flex; gap: 0.5rem; margin-top: 0.8rem; }
+.socials a {
+  width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.08); color: #fff;
+}
+.socials a:hover { background: rgba(255,255,255,0.18); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 1rem 0; color: #b9d1f5; font-size: 0.95rem; }
+
+.to-top {
+  position: fixed; right: 1rem; bottom: 1rem; width: 42px; height: 42px; border-radius: 50%;
+  border: none; background: var(--blue); color: #fff; cursor: pointer; box-shadow: var(--shadow);
+  opacity: 0; visibility: hidden; transform: translateY(8px); transition: 0.2s ease; z-index: 40;
+}
+.to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .topbar-right { display: none; }
+  .news-grid, .leaders-grid { grid-template-columns: repeat(2, 1fr); }
+  .split, .split.reverse { grid-template-columns: 1fr; }
+  .illustration-card { position: static; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 860px) {
+  .nav-toggle { display: inline-flex; }
+  .nav-menu {
+    position: absolute; top: 100%; left: 0; right: 0; background: #fff;
+    border-bottom: 1px solid var(--border); box-shadow: var(--shadow);
+    display: none; padding: 0.6rem;
+  }
+  .nav-menu.open { display: block; }
+  .nav-list { flex-direction: column; align-items: stretch; }
+  .nav-link { width: 100%; justify-content: space-between; }
+  .dropdown-menu {
+    position: static; opacity: 1; visibility: visible; transform: none;
+    box-shadow: none; border: none; padding: 0 0 0.3rem 0.6rem; display: none; min-width: 0;
+  }
+  .dropdown.open > .dropdown-menu { display: block; }
+  .hero { min-height: 480px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .cta-box { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  .topbar-left span:last-child { display: none; }
+  .news-grid, .leaders-grid, .stats-grid, .footer-grid { grid-template-columns: 1fr; }
+  .hero-control { display: none; }
+  .slide-content p { font-size: 1rem; }
+  .hero-actions .btn { width: 100%; }
+}
+
+
+/* Kepegawaian / Data tables */
+.data-toolbar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.data-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tab-btn {
+  border: 1px solid var(--border); background: #fff; color: #334155; padding: 0.55rem 0.85rem;
+  border-radius: 999px; font-weight: 600; cursor: pointer; transition: 0.15s ease; font-size: 0.92rem;
+}
+.tab-btn:hover { border-color: #bfd3ff; color: var(--blue); background: #f7faff; }
+.tab-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); box-shadow: 0 6px 14px rgba(4,28,59,0.18); }
+.data-controls { flex: 1; min-width: 240px; max-width: 420px; }
+.search-wrap {
+  display: flex; align-items: center; gap: 0.5rem; background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; padding: 0.55rem 0.75rem;
+}
+.search-wrap i { color: var(--muted); }
+.search-wrap input { border: none; outline: none; width: 100%; font: inherit; color: var(--text); background: transparent; }
+.data-meta-bar { margin: 0.2rem 0 0.8rem; color: var(--muted); font-size: 0.92rem; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.table-wrap { overflow: auto; border: 1px solid var(--border); border-radius: 14px; background: #fff; box-shadow: 0 4px 14px rgba(16,24,40,0.03); }
+.data-table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 760px; }
+.data-table th, .data-table td { padding: 0.75rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.93rem; }
+.data-table th {
+  position: sticky; top: 0; background: #f8fbff; color: var(--navy); font-weight: 700; z-index: 1;
+  border-bottom: 1px solid #dbe6f5;
+}
+.data-table tbody tr:hover { background: #f9fbff; }
+.data-table tbody tr:last-child td { border-bottom: none; }
+.table-note { margin-top: 0.6rem; color: var(--muted); font-size: 0.88rem; }
+.empty-state { padding: 1.2rem; text-align: center; color: var(--muted); }
+
+.tugas-container { display: grid; gap: 1rem; }
+.tugas-section { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.tugas-section h3 {
+  margin: 0; padding: 0.9rem 1rem; font-size: 1rem; color: var(--navy); background: #f8fbff; border-bottom: 1px solid var(--border);
+}
+.tugas-section .table-wrap { border: none; border-radius: 0; box-shadow: none; }
+.tugas-section .data-table { min-width: 640px; }
+
+.source-details { margin-top: 1.2rem; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 0.7rem 1rem; }
+.source-details summary { cursor: pointer; font-weight: 600; color: var(--navy); }
+.source-details ul { margin: 0.6rem 0 0.4rem 1.1rem; list-style: disc; color: #374151; }
+.source-details p { margin: 0.4rem 0 0.2rem; color: var(--muted); font-size: 0.92rem; }
+.source-details code { background: #f3f4f6; padding: 0.1rem 0.3rem; border-radius: 4px; font-size: 0.85em; }
+
+@media (max-width: 860px) {
+  .data-toolbar { flex-direction: column; align-items: stretch; }
+  .data-controls { max-width: none; width: 100%; }
+}
+@media (max-width: 600px) {
+  .tab-btn { flex: 1 1 auto; text-align: center; }
+  .data-table { min-width: 680px; }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <a href="https://www.ung.ac.id" target="_blank" rel="noopener"><i class="fas fa-home"></i> Universitas Negeri Gorontalo</a>
+        <a href="mailto:ft@ung.ac.id"><i class="fas fa-envelope"></i> ft@ung.ac.id</a>
+        <span><i class="fas fa-phone"></i> +62</span>
+      </div>
+      <div class="topbar-right">
+        <a href="#">PPID</a>
+        <a href="#kepegawaian" data-open-tab="dosen">Dosen</a>
+        <a href="#kepegawaian" data-open-tab="tendik_asn">Pegawai</a>
+        <a href="#">Alumni</a>
+        <a href="#">Kerjasama</a>
+        <a href="#">Prestasi</a>
+        <a href="#">Penelitian</a>
+        <a href="#">Pengabdian</a>
+        <a href="#">IKU</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="Beranda Fakultas Teknik UNG">
+        <span class="brand-mark">FT</span>
+        <span class="brand-text">
+          <strong>Fakultas Teknik</strong>
+          <small>Universitas Negeri Gorontalo</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li class="dropdown">
+            <button class="nav-link dropdown-toggle">Profil <i class="fas fa-chevron-down"></i></button>
+            <ul class="dropdown-menu">
+              <li><a href="#profil">Sejarah</a></li>
+              <li><a href="#visi">Visi-Misi</a></li>
+              <li><a href="#profil">Tujuan</a></li>
+              <li><a href="#profil">Sasaran</a></li>
+              <li><a href="#profil">Struktur Organisasi</a></li>
+              <li><a href="#pimpinan">Pimpinan Fakultas</a></li>
+              <li><a href="#profil">Fasilitas</a></li>
+              <li><a href="#profil">Akreditasi</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <button class="nav-link dropdown-toggle">Jurusan <i class="fas fa-chevron-down"></i></button>
+            <ul class="dropdown-menu">
+              <li><a href="#jurusan">Teknik Sipil</a></li>
+              <li><a href="#jurusan">Teknik Elektro &amp; Komputer</a></li>
+              <li><a href="#jurusan">Teknik Informatika</a></li>
+              <li><a href="#jurusan">Seni Rupa dan Desain</a></li>
+              <li><a href="#jurusan">Teknik Arsitektur</a></li>
+              <li><a href="#jurusan">Teknik Industri</a></li>
+              <li><a href="#jurusan">Profesi Insinyur</a></li>
+              <li><a href="#jurusan">Perencanaan Wilayah dan Kota</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <button class="nav-link dropdown-toggle">Informasi <i class="fas fa-chevron-down"></i></button>
+            <ul class="dropdown-menu">
+              <li><a href="#informasi">Agenda</a></li>
+              <li><a href="#informasi">Berita</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <button class="nav-link dropdown-toggle">Akademik <i class="fas fa-chevron-down"></i></button>
+            <ul class="dropdown-menu">
+              <li><a href="#akademik">Kalender Akademik</a></li>
+              <li><a href="https://siat.ung.ac.id" target="_blank" rel="noopener">Sistem Informasi Akademik (SIAT)</a></li>
+              <li><a href="https://spada.ung.ac.id" target="_blank" rel="noopener">Pembelajaran Online (SPADA)</a></li>
+            </ul>
+          </li>
+          <li><a href="#pimpinan" class="nav-link">Pimpinan</a></li>
+          <li><a href="#kepegawaian" class="nav-link">Kepegawaian</a></li>
+          <li><a href="#layanan" class="nav-link">Layanan</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero / Slider -->
+  <section class="hero" id="home">
+    <div class="hero-slider">
+      <div class="slide active" style="--bg: linear-gradient(120deg, rgba(4,28,59,.85), rgba(4,28,59,.45)), linear-gradient(135deg, #0b3d91, #1e6bd6);">
+        <div class="container slide-content">
+          <p class="eyebrow">Fakultas Teknik UNG</p>
+          <h1>Unggul dan Berdaya Saing di Bidang Keteknikan</h1>
+          <p>Mengembangkan pendidikan, penelitian, dan pengabdian berbasis potensi kawasan di wilayah Timur Indonesia.</p>
+          <div class="hero-actions">
+            <a href="#jurusan" class="btn btn-primary">Lihat Program Studi</a>
+            <a href="#informasi" class="btn btn-outline">Berita Terbaru</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide" style="--bg: linear-gradient(120deg, rgba(4,28,59,.85), rgba(4,28,59,.35)), linear-gradient(135deg, #134e4a, #0ea5a4);">
+        <div class="container slide-content">
+          <p class="eyebrow">Pendidikan &amp; Inovasi</p>
+          <h1>Fasilitas dan Lingkungan Belajar yang Mendukung</h1>
+          <p>Mempersiapkan lulusan yang kompeten, adaptif, dan siap berkontribusi bagi masyarakat dan industri.</p>
+          <div class="hero-actions">
+            <a href="#akademik" class="btn btn-primary">Informasi Akademik</a>
+            <a href="#profil" class="btn btn-outline">Profil Fakultas</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide" style="--bg: linear-gradient(120deg, rgba(4,28,59,.85), rgba(4,28,59,.35)), linear-gradient(135deg, #4c1d95, #7c3aed);">
+        <div class="container slide-content">
+          <p class="eyebrow">Kolaborasi &amp; Prestasi</p>
+          <h1>Sinergi dengan Mitra untuk Dampak Nyata</h1>
+          <p>Kerja sama strategis dalam pendidikan, penelitian, dan pengabdian untuk kemajuan daerah.</p>
+          <div class="hero-actions">
+            <a href="#informasi" class="btn btn-primary">Lihat Informasi</a>
+            <a href="#pimpinan" class="btn btn-outline">Pimpinan Fakultas</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="hero-control prev" id="heroPrev" aria-label="Slide sebelumnya"><i class="fas fa-chevron-left"></i></button>
+    <button class="hero-control next" id="heroNext" aria-label="Slide berikutnya"><i class="fas fa-chevron-right"></i></button>
+    <div class="hero-dots" id="heroDots" aria-label="Navigasi slide"></div>
+  </section>
+
+  <!-- Visi & Stats -->
+  <section class="vision-stats" id="visi">
+    <div class="container">
+      <div class="vision-box">
+        <h2>VISI 2035</h2>
+        <p>"Menjadi Fakultas yang Unggul dan Berdaya Saing dalam Pengembangan Bidang Keteknikan berbasis Potensi Kawasan di Wilayah Timur Indonesia"</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <i class="fas fa-building-columns"></i>
+          <div class="stat-value" data-target="11">0</div>
+          <div class="stat-label">Program Studi</div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-user-graduate"></i>
+          <div class="stat-value" data-target="5100" data-suffix="±">0</div>
+          <div class="stat-label">Mahasiswa</div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-award"></i>
+          <div class="stat-value" data-target="5000" data-suffix="±">0</div>
+          <div class="stat-label">Lulusan</div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-chalkboard-user"></i>
+          <div class="stat-value" data-target="120" data-suffix="±">0</div>
+          <div class="stat-label">Tenaga Pengajar</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Informasi / Berita -->
+  <section class="section" id="informasi">
+    <div class="container">
+      <div class="section-head center">
+        <h2>Informasi</h2>
+        <p>Berita, informasi, dan pengumuman terbaru Fakultas Teknik</p>
+      </div>
+      <div class="news-grid">
+        <article class="news-card">
+          <div class="news-thumb thumb-a"></div>
+          <div class="news-body">
+            <div class="news-meta"><span><i class="fas fa-calendar-alt"></i> 11 November 2026</span><span><i class="fas fa-user"></i> Admin</span></div>
+            <h3>Perluas Ruang Belajar Mahasiswa, Jurusan PWK UNG Bangun Kemitraan Strategis dengan Kantor Pertanahan se-Gorontalo</h3>
+            <p>Jurusan Perencanaan Wilayah dan Kota (PWK), Fakultas Teknik Universitas Negeri Gorontalo memperkuat kolaborasi untuk mendukung pembelajaran dan pengalaman lapangan mahasiswa.</p>
+            <a href="#" class="read-more">Baca Selengkapnya</a>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-thumb thumb-b"></div>
+          <div class="news-body">
+            <div class="news-meta"><span><i class="fas fa-calendar-alt"></i> 04 November 2026</span><span><i class="fas fa-user"></i> Admin</span></div>
+            <h3>GIZ Tinjau Program Pengelolaan Sampah Gorontalo, Tiga Wilayah Binaan PWK FT UNG Jadi Percontohan</h3>
+            <p>Kunjungan dan peninjauan program pengelolaan sampah menjadi wujud kolaborasi multipihak dalam penguatan praktik berkelanjutan di wilayah binaan.</p>
+            <a href="#" class="read-more">Baca Selengkapnya</a>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-thumb thumb-c"></div>
+          <div class="news-body">
+            <div class="news-meta"><span><i class="fas fa-calendar-alt"></i> 26 Oktober 2026</span><span><i class="fas fa-user"></i> Admin</span></div>
+            <h3>PWK UNG Perkuat Sinergi dengan ATR/BPN se-Gorontalo melalui Program Magang Mahasiswa</h3>
+            <p>Program magang mahasiswa menjadi sarana peningkatan kompetensi sekaligus penguatan jejaring kerja sama antara perguruan tinggi dan instansi terkait.</p>
+            <a href="#" class="read-more">Baca Selengkapnya</a>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-thumb thumb-d"></div>
+          <div class="news-body">
+            <div class="news-meta"><span><i class="fas fa-calendar-alt"></i> 22 Oktober 2026</span><span><i class="fas fa-user"></i> Admin</span></div>
+            <h3>Mahasiswa Asal Aljazair Bergabung di Prodi Sistem Informasi FT UNG</h3>
+            <p>Fakultas Teknik Universitas Negeri Gorontalo menyambut mahasiswa internasional sebagai bagian dari upaya penguatan suasana akademik yang inklusif dan global.</p>
+            <a href="#" class="read-more">Baca Selengkapnya</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jurusan / Program Studi -->
+  <section class="section alt" id="jurusan">
+    <div class="container split">
+      <div class="split-media">
+        <div class="illustration-card">
+          <div class="illustration-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Pendidikan Teknik Berkualitas</h3>
+          <p>Fakultas Teknik terdiri dari berbagai jurusan dan program studi terakreditasi yang mendukung pengembangan kompetensi mahasiswa.</p>
+          <ul class="check-list">
+            <li><i class="fas fa-check-circle"></i> Kurikulum relevan dengan kebutuhan industri</li>
+            <li><i class="fas fa-check-circle"></i> Dosen dan tenaga pendidik berpengalaman</li>
+            <li><i class="fas fa-check-circle"></i> Lingkungan akademik kolaboratif dan inovatif</li>
+          </ul>
+        </div>
+      </div>
+      <div class="split-content" id="profil">
+        <div class="section-head">
+          <h2>Jurusan / Program Studi</h2>
+          <p>Fakultas Teknik memiliki beragam jurusan dan program studi untuk mendukung pengembangan bidang keteknikan.</p>
+        </div>
+        <div class="program-list">
+          <div class="program-item">
+            <h4><i class="fas fa-city"></i> Teknik Sipil</h4>
+            <ul>
+              <li>Prodi S1 Teknik Sipil <span class="badge">B</span></li>
+              <li>Prodi S1 Pendidikan Vokasional Konstruksi Bangunan <span class="badge">Baik Sekali</span></li>
+            </ul>
+          </div>
+          <div class="program-item">
+            <h4><i class="fas fa-bolt"></i> Teknik Elektro &amp; Komputer</h4>
+            <ul>
+              <li>Prodi S1 Teknik Elektro <span class="badge">B</span></li>
+              <li>Prodi S1 Teknik Komputer</li>
+            </ul>
+          </div>
+          <div class="program-item">
+            <h4><i class="fas fa-laptop-code"></i> Teknik Informatika</h4>
+            <ul>
+              <li>Prodi S1 Sistem Informasi <span class="badge">B</span></li>
+              <li>Prodi S1 Pendidikan Teknologi Informasi <span class="badge success">Unggul</span></li>
+            </ul>
+          </div>
+          <div class="program-item">
+            <h4><i class="fas fa-drafting-compass"></i> Teknik Arsitektur &amp; PWK</h4>
+            <ul>
+              <li>Prodi S1 Teknik Arsitektur <span class="badge">Baik Sekali</span></li>
+              <li>Prodi S1 Perencanaan Wilayah dan Kota <span class="badge">Baik</span></li>
+            </ul>
+          </div>
+          <div class="program-item">
+            <h4><i class="fas fa-industry"></i> Teknik Industri &amp; Seni Rupa</h4>
+            <ul>
+              <li>Prodi S1 Teknik Industri <span class="badge">B</span></li>
+              <li>Prodi S1 Pendidikan Teknik Mesin <span class="badge success">Unggul</span></li>
+              <li>Prodi S1 Pendidikan Seni Rupa <span class="badge success">Unggul</span></li>
+            </ul>
+          </div>
+          <div class="program-item">
+            <h4><i class="fas fa-helmet-safety"></i> Profesi Insinyur</h4>
+            <ul>
+              <li>Program Profesi Insinyur <span class="badge muted">Proses Akreditasi</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kuliah / Akademik -->
+  <section class="section" id="akademik">
+    <div class="container split reverse">
+      <div class="split-content">
+        <div class="section-head">
+          <h2>Kuliah di Fakultas Teknik</h2>
+          <p>Fakultas Teknik menawarkan peluang pengembangan ilmu, keterampilan, dan karier yang luas di berbagai bidang keteknikan.</p>
+        </div>
+        <div class="admission-list">
+          <div class="admission-item">
+            <div class="admission-icon"><i class="fas fa-pen-to-square"></i></div>
+            <div>
+              <h4>SNBT</h4>
+              <p>Seleksi Nasional Berbasis Tes dilakukan berdasarkan hasil UTBK dan dapat ditambah kriteria lain sesuai ketentuan. UTBK mencakup tes potensi skolastik dan tes kompetensi akademik.</p>
+            </div>
+          </div>
+          <div class="admission-item">
+            <div class="admission-icon"><i class="fas fa-star"></i></div>
+            <div>
+              <h4>SNBP</h4>
+              <p>Seleksi Nasional Berbasis Prestasi dilakukan berdasarkan penelusuran prestasi akademik, nonakademik, dan/atau portofolio calon mahasiswa.</p>
+            </div>
+          </div>
+          <div class="admission-item">
+            <div class="admission-icon"><i class="fas fa-door-open"></i></div>
+            <div>
+              <h4>MANDIRI</h4>
+              <p>Seleksi Mandiri diselenggarakan dengan mekanisme tes berbasis komputer dan/atau portofolio prestasi sesuai ketentuan yang ditetapkan universitas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="split-media">
+        <div class="campus-card">
+          <div class="campus-visual">
+            <i class="fas fa-school"></i>
+          </div>
+          <div class="campus-info">
+            <h3>Lingkungan Akademik</h3>
+            <p>Didukung suasana belajar yang kondusif, jejaring kerja sama, dan pengembangan kompetensi untuk mempersiapkan lulusan yang siap bersaing.</p>
+            <a href="#informasi" class="btn btn-primary btn-sm">Jelajahi Kegiatan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pimpinan -->
+  <section class="section alt" id="pimpinan">
+    <div class="container">
+      <div class="section-head center">
+        <h2>Pimpinan Fakultas</h2>
+        <p>Pimpinan Fakultas Teknik Universitas Negeri Gorontalo</p>
+      </div>
+      <div class="leaders-grid">
+        <div class="leader-card">
+          <div class="leader-photo photo-1"><span>SS</span></div>
+          <div class="leader-body">
+            <h3>Prof. Dr. Ir. Sardi Salim, M.Pd., IPU, ASEAN Eng.</h3>
+            <p>Dekan Fakultas Teknik</p>
+          </div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-photo photo-2"><span>AM</span></div>
+          <div class="leader-body">
+            <h3>Dr. Arip Mulyanto, S.Kom., M.Kom., MCE</h3>
+            <p>Wakil Dekan I<br>(Pendidikan dan Akademik)</p>
+          </div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-photo photo-3"><span>ML</span></div>
+          <div class="leader-body">
+            <h3>Dr. Mukhlisulfatih Latief, S.Kom., MT</h3>
+            <p>Wakil Dekan II<br>(Umum dan Keuangan)</p>
+          </div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-photo photo-4"><span>YT</span></div>
+          <div class="leader-body">
+            <h3>Dr. Moh. Yusuf Tuloli, ST., M.T.</h3>
+            <p>Wakil Dekan III<br>(Kemahasiswaan dan Alumni)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Kepegawaian (dari Excel) -->
+  <section class="section" id="kepegawaian">
+    <div class="container">
+      <div class="section-head center">
+        <h2>Data Kepegawaian</h2>
+        <p>Data dosen dan tenaga kependidikan Fakultas Teknik yang diambil dari berkas Excel terlampir.</p>
+      </div>
+
+      <div class="data-toolbar">
+        <div class="data-tabs" role="tablist" aria-label="Kategori data kepegawaian">
+          <button class="tab-btn active" data-tab="dosen" role="tab" aria-selected="true">Dosen (DUK)</button>
+          <button class="tab-btn" data-tab="serdos" role="tab" aria-selected="false">Penerima Serdos 2026</button>
+          <button class="tab-btn" data-tab="guru_besar" role="tab" aria-selected="false">Tunjangan Guru Besar 2026</button>
+          <button class="tab-btn" data-tab="tendik_asn" role="tab" aria-selected="false">Tendik ASN</button>
+          <button class="tab-btn" data-tab="tugas" role="tab" aria-selected="false">Tugas/Beban Kerja</button>
+        </div>
+        <div class="data-controls">
+          <label class="search-wrap" for="dataSearch">
+            <i class="fas fa-search"></i>
+            <input id="dataSearch" type="search" placeholder="Cari nama, NIP, jabatan, status..." autocomplete="off">
+          </label>
+        </div>
+      </div>
+
+      <div class="data-meta-bar" id="dataMetaBar">Memuat data...</div>
+
+      <div class="data-panels">
+        <div class="tab-panel active" id="panel-dosen" data-panel="dosen">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>No</th><th>NIP</th><th>Nama</th><th>Pendidikan</th><th>Pangkat</th><th>Gol.</th><th>Jabatan</th><th>Jenis Pegawai</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-dosen"></tbody>
+            </table>
+          </div>
+          <div class="table-note">Sumber: DUK FATEK 2023 &amp; 2024 (Periode April 2024).</div>
+        </div>
+
+        <div class="tab-panel" id="panel-serdos" data-panel="serdos">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th>No</th><th>NIP</th><th>Nama Lengkap</th><th>Keterangan</th></tr>
+              </thead>
+              <tbody id="tbody-serdos"></tbody>
+            </table>
+          </div>
+          <div class="table-note">Sumber: Daftar dosen penerima Serdos bulan Juli s.d. Desember 2026.</div>
+        </div>
+
+        <div class="tab-panel" id="panel-guru_besar" data-panel="guru_besar">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th>No</th><th>NIP</th><th>Nama Lengkap</th><th>Keterangan</th></tr>
+              </thead>
+              <tbody id="tbody-guru_besar"></tbody>
+            </table>
+          </div>
+          <div class="table-note">Sumber: Daftar dosen penerima tunjangan Guru Besar bulan Juli s.d. Desember 2026.</div>
+        </div>
+
+        <div class="tab-panel" id="panel-tendik_asn" data-panel="tendik_asn">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th>No</th><th>Nama</th><th>Status</th><th>Jabatan</th><th>Tugas/Beban Kerja</th></tr>
+              </thead>
+              <tbody id="tbody-tendik_asn"></tbody>
+            </table>
+          </div>
+          <div class="table-note">Sumber: Data Tendik (NAMA DAN JABATAN TENDIK SESUAI SK, Tahun 2025).</div>
+        </div>
+
+        <div class="tab-panel" id="panel-tugas" data-panel="tugas">
+          <div id="tugasContainer" class="tugas-container"></div>
+          <div class="table-note">Sumber: Data Tendik (Pembagian Tugas/Beban Kerja).</div>
+        </div>
+      </div>
+
+      <details class="source-details">
+        <summary>Catatan sumber data</summary>
+        <ul>
+          <li><code>daftar dosen penerima serdos dan tunjangan guru besar bulan juli - desember 2026.xlsx</code></li>
+          <li><code>Data Dosen Fakultas Teknik.xlsx</code> / <code>DUK FATEK 2023 &amp; 2024 (1).xlsx</code> (periode April 2024)</li>
+          <li><code>Dewiku Data Tendik  Kirim Kepegawaian (1).xlsx</code></li>
+        </ul>
+        <p>Data ditampilkan sebagaimana tercantum pada berkas sumber (termasuk kemungkinan ketidakkonsistenan penulisan). Tabel dapat digulir secara horizontal pada layar kecil.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Layanan singkat -->
+  <section class="section cta-section" id="layanan">
+    <div class="container cta-box">
+      <div>
+        <h2>Layanan &amp; Tautan Penting</h2>
+        <p>Akses cepat ke layanan akademik dan informasi penting Fakultas Teknik UNG.</p>
+      </div>
+      <div class="cta-links">
+        <a href="https://siat.ung.ac.id" target="_blank" rel="noopener" class="cta-link"><i class="fas fa-graduation-cap"></i> SIAT</a>
+        <a href="https://spada.ung.ac.id" target="_blank" rel="noopener" class="cta-link"><i class="fas fa-chalkboard"></i> SPADA</a>
+        <a href="https://www.ung.ac.id" target="_blank" rel="noopener" class="cta-link"><i class="fas fa-university"></i> UNG</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <span class="brand-mark small">FT</span>
+          <div>
+            <strong>Fakultas Teknik</strong>
+            <div>Universitas Negeri Gorontalo</div>
+          </div>
+        </div>
+        <p>Jl. Prof. Dr. Ing. B.J. Habibie, Moutong – Tilongkabila, Kab. Bone Bolango, Provinsi Gorontalo 96554, Indonesia</p>
+        <p><i class="fas fa-phone-alt"></i> +62</p>
+        <p><i class="fas fa-envelope"></i> ft@ung.ac.id</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" aria-label="Lokasi"><i class="fas fa-map-marker-alt"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Tautan</h4>
+        <ul>
+          <li><a href="https://www.ung.ac.id" target="_blank" rel="noopener">Universitas Negeri Gorontalo</a></li>
+          <li><a href="https://siat.ung.ac.id" target="_blank" rel="noopener">Sistem Informasi Akademik</a></li>
+          <li><a href="https://repository.ung.ac.id" target="_blank" rel="noopener">Repository UNG</a></li>
+          <li><a href="http://pmb.ung.ac.id" target="_blank" rel="noopener">Penerimaan Mahasiswa Baru</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#profil">Profil</a></li>
+          <li><a href="#jurusan">Jurusan &amp; Prodi</a></li>
+          <li><a href="#informasi">Informasi</a></li>
+          <li><a href="#akademik">Akademik</a></li>
+          <li><a href="#pimpinan">Pimpinan</a></li>
+          <li><a href="#kepegawaian">Kepegawaian</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">&copy; 2026 <strong>Fakultas Teknik</strong> Universitas Negeri Gorontalo</div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Kembali ke atas"><i class="fas fa-chevron-up"></i></button>
+
+  <script>
+window.FT_DATA = {
+  "meta": {
+    "sumber": [
+      "daftar dosen penerima serdos dan tunjangan guru besar bulan juli - desember 2026.xlsx",
+      "Data Dosen Fakultas Teknik.xlsx / DUK FATEK 2023 & 2024 (APRIL 2024)",
+      "Dewiku Data Tendik Kirim Kepegawaian (1).xlsx"
+    ]
+  },
+  "serdos": [
+    {
+      "no": 1,
+      "nip": "197605232006041002",
+      "nama": "Prof. Dr. Ir. Eduart Wolok, S.T., M.T.,IPM.",
+      "ket": "Serdos"
+    },
+    {
+      "no": 2,
+      "nip": "197201021998022001",
+      "nama": "Prof. Dr. Lanto Ningrayati Amali, S.Kom, M.Kom., Ph.D",
+      "ket": "Serdos"
+    },
+    {
+      "no": 3,
+      "nip": "196107061990031006",
+      "nama": "Ir. Wahab Musa, M.T., Ph.D",
+      "ket": "Serdos"
+    },
+    {
+      "no": 4,
+      "nip": "196908071995012001",
+      "nama": "Dr. Marike Mahmud, S.T, M.Si",
+      "ket": "Serdos"
+    },
+    {
+      "no": 5,
+      "nip": "197607232003121002",
+      "nama": "Dr. Ir. Trifandi Lasalewo, S.T, MT",
+      "ket": "Serdos"
+    },
+    {
+      "no": 6,
+      "nip": "197304162001121001",
+      "nama": "Dr. Moh. Hidayat Koniyo, S.T, M.Kom",
+      "ket": "Serdos"
+    },
+    {
+      "no": 7,
+      "nip": "196509231994031001",
+      "nama": "Ir. Barry Yusuf Labdul, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 8,
+      "nip": "197201302006041002",
+      "nama": "Dr. Irwan Wunarlan, S.T., M.Si",
+      "ket": "Serdos"
+    },
+    {
+      "no": 9,
+      "nip": "196807051997021001",
+      "nama": "Prof. Dr. Ir. Sardi Salim, M.Pd., IPU.,ASEAN Eng.",
+      "ket": "Serdos"
+    },
+    {
+      "no": 10,
+      "nip": "197505182005012002",
+      "nama": "Dr. Hariana, S.Pd, M.Ds",
+      "ket": "Serdos"
+    },
+    {
+      "no": 11,
+      "nip": "196811191999031001",
+      "nama": "Dr. Anton Kaharu, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 12,
+      "nip": "197712102001121001",
+      "nama": "Dr. Mukhlisulfatih Latief, S.Kom, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 13,
+      "nip": "197701042001121002",
+      "nama": "Dr. Mohamad Yusuf Tuloli, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 14,
+      "nip": "197704042001121001",
+      "nama": "Dr. Lanto Mohamad Kamil Amali, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 15,
+      "nip": "197102222001121001",
+      "nama": "Yasin Mohamad, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 16,
+      "nip": "197207062002121002",
+      "nama": "Dr. I Wayan Sudana, S.Sn, M.Sn",
+      "ket": "Serdos"
+    },
+    {
+      "no": 17,
+      "nip": "197603232001121001",
+      "nama": "Dr. Arip Mulyanto, S.Kom, M.Kom",
+      "ket": "Serdos"
+    },
+    {
+      "no": 18,
+      "nip": "197711212003121006",
+      "nama": "Dr. Fadly Achmad, S.T, M.Eng",
+      "ket": "Serdos"
+    },
+    {
+      "no": 19,
+      "nip": "197805212002122013",
+      "nama": "Hasdiana, S.Pd, M.Sn",
+      "ket": "Serdos"
+    },
+    {
+      "no": 20,
+      "nip": "196404271994032001",
+      "nama": "Ir. Rawiyah Husnan, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 21,
+      "nip": "197204301998022001",
+      "nama": "Dr. Yuliyanti Kadir, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 22,
+      "nip": "196904071999032001",
+      "nama": "Dr. Aryati Alitu, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 23,
+      "nip": "197511242001121001",
+      "nama": "Dr. Dian Novian, S.Kom, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 24,
+      "nip": "197508232003121002",
+      "nama": "Dr. Arfan Utiarahman, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 25,
+      "nip": "196605261994031001",
+      "nama": "Drs. Muh Rifai Katili, M.Kom.,Ph.D",
+      "ket": "Serdos"
+    },
+    {
+      "no": 26,
+      "nip": "196310272001121002",
+      "nama": "Dr. Ir. Arqam Laya, S.T.,M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 27,
+      "nip": "196212091987031003",
+      "nama": "Drs. Suleman Dangkua, M.Hum",
+      "ket": "Serdos"
+    },
+    {
+      "no": 28,
+      "nip": "197601072006041002",
+      "nama": "Kalih Trumansyahjaya, S.T., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 29,
+      "nip": "196704212003121001",
+      "nama": "Zainudin Bonok, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 30,
+      "nip": "197502242006042001",
+      "nama": "Dr. Beby Sintia Dewi Banteng, ST, M.Si.P",
+      "ket": "Serdos"
+    },
+    {
+      "no": 31,
+      "nip": "197805282003122003",
+      "nama": "Sitti Suhada, S.Kom., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 32,
+      "nip": "196702071992022001",
+      "nama": "Lydia Surijani Tatura, ST, M.Si",
+      "ket": "Serdos"
+    },
+    {
+      "no": 33,
+      "nip": "198007092006041001",
+      "nama": "I Wayan Seriyoga Parta, S.Sn, M.Sn",
+      "ket": "Serdos"
+    },
+    {
+      "no": 34,
+      "nip": "197812082003121002",
+      "nama": "Tajuddin Abdilah, S.Kom, M.Cs",
+      "ket": "Serdos"
+    },
+    {
+      "no": 35,
+      "nip": "197307162005012001",
+      "nama": "Nurnaningsih Nico Abdul, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 36,
+      "nip": "196903132005012002",
+      "nama": "Dr. Indriati Martha Patuti, S.T, M.Eng",
+      "ket": "Serdos"
+    },
+    {
+      "no": 37,
+      "nip": "198010142005011003",
+      "nama": "Dr. Abd. Aziz Bouty, S.Kom., M.Kom",
+      "ket": "Serdos"
+    },
+    {
+      "no": 38,
+      "nip": "197812222006041004",
+      "nama": "Dr. Komang Arya Utama, S.T., M.Eng",
+      "ket": "Serdos"
+    },
+    {
+      "no": 39,
+      "nip": "197410192005012001",
+      "nama": "Ernawati, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 40,
+      "nip": "197402192003122001",
+      "nama": "Zuhriati A. Djailani, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 41,
+      "nip": "197502142001122004",
+      "nama": "Ade Irawaty Tolago, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 42,
+      "nip": "197309032006042004",
+      "nama": "Dr. Frice Lahmudin Desei, S.T., M.Sc",
+      "ket": "Serdos"
+    },
+    {
+      "no": 43,
+      "nip": "197102182005011001",
+      "nama": "Mohamad Faisal Dunggio, S.T., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 44,
+      "nip": "198301132008122003",
+      "nama": "Dr. Ir. Stella Junus, S.T., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 45,
+      "nip": "197409112008122003",
+      "nama": "Dr. Isnawati Mohamad, S.Pd., M.Pd",
+      "ket": "Serdos"
+    },
+    {
+      "no": 46,
+      "nip": "198305142006041004",
+      "nama": "Manda Rohandi, S.Kom, M.Kom",
+      "ket": "Serdos"
+    },
+    {
+      "no": 47,
+      "nip": "198005062005012003",
+      "nama": "Ulin Naini, S.Pd, M.Sn",
+      "ket": "Serdos"
+    },
+    {
+      "no": 48,
+      "nip": "197611232005011005",
+      "nama": "Syarief Munawar, S.Sn., M.Sn",
+      "ket": "Serdos"
+    },
+    {
+      "no": 49,
+      "nip": "197804252003122001",
+      "nama": "Hasmah, S.Pd, M.Sn",
+      "ket": "Serdos"
+    },
+    {
+      "no": 50,
+      "nip": "197610192006041001",
+      "nama": "Dr. Buyung Rahmad Machmoed, S.T., M.Eng",
+      "ket": "Serdos"
+    },
+    {
+      "no": 51,
+      "nip": "197903312012121001",
+      "nama": "Rahman Takdir, S.Kom., M.Cs",
+      "ket": "Serdos"
+    },
+    {
+      "no": 52,
+      "nip": "197801272005011001",
+      "nama": "Rahmat Deddy Rianto Dako, S.T, M.Eng",
+      "ket": "Serdos"
+    },
+    {
+      "no": 53,
+      "nip": "198401152008121002",
+      "nama": "Hendra Uloli, S.T., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 54,
+      "nip": "198110312008121001",
+      "nama": "Salahudin Olii, S.T., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 55,
+      "nip": "197410222005011000",
+      "nama": "Idham Halid Lahay, S.T, M.Sc",
+      "ket": "Serdos"
+    },
+    {
+      "no": 56,
+      "nip": "198602142015042002",
+      "nama": "Nikmasari Pakaya, S.Kom., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 57,
+      "nip": "197405132006042007",
+      "nama": "Dr. Mursidah Waty, S.Pd, M.Sn",
+      "ket": "Serdos"
+    },
+    {
+      "no": 58,
+      "nip": "197506242005011003",
+      "nama": "Syahrir Abdussamad, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 59,
+      "nip": "197802052008122003",
+      "nama": "Dr.Sri Sutarni Arifin, S.Hut, M.Si",
+      "ket": "Serdos"
+    },
+    {
+      "no": 60,
+      "nip": "197712132008011006",
+      "nama": "Ir. Muhammad Rijal Syukri, ST, M.Si",
+      "ket": "Serdos"
+    },
+    {
+      "no": 61,
+      "nip": "197201282005011003",
+      "nama": "Ifan Wiranto, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 62,
+      "nip": "197004052009121001",
+      "nama": "Dr. Bambang Panji Asmara, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 63,
+      "nip": "197609292006041004",
+      "nama": "Hasanuddin, S.T., M.Si",
+      "ket": "Serdos"
+    },
+    {
+      "no": 64,
+      "nip": "197401162000121001",
+      "nama": "Taufiq Ismail Yusuf, S.T, M.Si",
+      "ket": "Serdos"
+    },
+    {
+      "no": 65,
+      "nip": "197510172005012001",
+      "nama": "Jumiati Ilham, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 66,
+      "nip": "197604272006042002",
+      "nama": "Salmawaty Tansa, S.T, M.Eng",
+      "ket": "Serdos"
+    },
+    {
+      "no": 67,
+      "nip": "197604302005011002",
+      "nama": "Kasmat Saleh Nur, S.T, M.Eng",
+      "ket": "Serdos"
+    },
+    {
+      "no": 68,
+      "nip": "197401042003121001",
+      "nama": "Arfan Usman Sumaga, S.T., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 69,
+      "nip": "197411252001121002",
+      "nama": "Ervan Hasan Harun, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 70,
+      "nip": "197410032001121001",
+      "nama": "Amirudin Yunus Dako, S.T, M.Eng",
+      "ket": "Serdos"
+    },
+    {
+      "no": 71,
+      "nip": "198004172002122002",
+      "nama": "Lillyan Hadjaratie, S.Kom, M.Si",
+      "ket": "Serdos"
+    },
+    {
+      "no": 72,
+      "nip": "198301302008122002",
+      "nama": "Roviana H. Dai, S.Kom., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 73,
+      "nip": "198512282019032011",
+      "nama": "Sartika Dewi Usman, S.T., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 74,
+      "nip": "198207252008121004",
+      "nama": "Dr. Mohamad Syafri Tuloli, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 75,
+      "nip": "199005202019031015",
+      "nama": "Alfian Zakaria, S.SI., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 76,
+      "nip": "198401102018031001",
+      "nama": "Jamal Darusalam Giu, S.T., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 77,
+      "nip": "199006092018031001",
+      "nama": "Sunardi, S.Pd., M.Pd",
+      "ket": "Serdos"
+    },
+    {
+      "no": 78,
+      "nip": "196811302003121001",
+      "nama": "Satar Saman, S.T., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 79,
+      "nip": "196811302003121001",
+      "nama": "Arif Supriyatno, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 80,
+      "nip": "197812252008011001",
+      "nama": "Dr.Jemmy A Pakaja, S.Kom., M.Kom",
+      "ket": "Serdos"
+    },
+    {
+      "no": 81,
+      "nip": "198110232006041002",
+      "nama": "Rampi Yusuf, S.Kom., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 82,
+      "nip": "196810102003121001",
+      "nama": "Berni Idji, S.T., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 83,
+      "nip": "198407272015041001",
+      "nama": "Muhammad Yasser Arafat, S.Pd., M.Pd",
+      "ket": "Serdos"
+    },
+    {
+      "no": 84,
+      "nip": "198804202019032020",
+      "nama": "Niniek Pratiwi, S.T., M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 85,
+      "nip": "198903162019032013",
+      "nama": "Indhitya R. Padiku, S.Kom., M.Kom",
+      "ket": "Serdos"
+    },
+    {
+      "no": 86,
+      "nip": "196712202003121001",
+      "nama": "Vierta Ramlan Tallei, S.T, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 87,
+      "nip": "197011052001121001",
+      "nama": "Iskandar Zulkarnain Nasibu, S.Pd., M.Eng",
+      "ket": "Serdos"
+    },
+    {
+      "no": 88,
+      "nip": "198905262019031006",
+      "nama": "Budiyanto Ahaliki, S.SI., M.Kom",
+      "ket": "Serdos"
+    },
+    {
+      "no": 89,
+      "nip": "199409052020121012",
+      "nama": "Ahmad Azhar Kadim, S.Kom., M.Kom",
+      "ket": "Serdos"
+    },
+    {
+      "no": 90,
+      "nip": "198708232022032003",
+      "nama": "Rahmayanti, M.T",
+      "ket": "Serdos"
+    },
+    {
+      "no": 91,
+      "nip": "199502142024061001",
+      "nama": "Rahmat Hidayat Dongka, S.Pd., M.Pd",
+      "ket": "Serdos"
+    },
+    {
+      "no": 92,
+      "nip": "198904072015041004",
+      "nama": "Moh. Ramdhan Arif Kaluku, S.Kom., M.Kom",
+      "ket": "Serdos"
+    }
+  ],
+  "guru_besar": [
+    {
+      "no": 1,
+      "nip": "197605232006041002",
+      "nama": "Prof. Dr. Ir. Eduart Wolok, S.T., M.T.,IPM.",
+      "ket": "Serdos"
+    },
+    {
+      "no": 2,
+      "nip": "197201021998022001",
+      "nama": "Prof. Dr. Lanto Ningrayati Amali, S.Kom, M.Kom., Ph.D",
+      "ket": "Serdos"
+    },
+    {
+      "no": 3,
+      "nip": "196807051997021001",
+      "nama": "Prof. Dr. Ir. Sardi Salim, M.Pd., IPU.,ASEAN Eng.",
+      "ket": "Serdos"
+    }
+  ],
+  "dosen": [
+    {
+      "no": 1,
+      "nip": "197605232006041002",
+      "nama": "Prof. Dr. Ir. Eduart Wolok, S.T., M.T.,IPM.",
+      "pendidikan": "S3",
+      "tahun_lulus": "2018",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Utama Madya",
+      "golongan": "IV/d",
+      "tmt_golongan": "",
+      "jabatan": "Guru Besar"
+    },
+    {
+      "no": 2,
+      "nip": "196107061990031006",
+      "nama": "Ir. Wahab Musa, M.T., Ph.D",
+      "pendidikan": "S3",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Utama Muda",
+      "golongan": "IV/c",
+      "tmt_golongan": "40452",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 3,
+      "nip": "196908071995012001",
+      "nama": "Dr. Marike Mahmud, S.T, M.Si",
+      "pendidikan": "S3",
+      "tahun_lulus": "2012",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Pembina Utama Muda",
+      "golongan": "IV/c",
+      "tmt_golongan": "44470",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 4,
+      "nip": "197201021998022001",
+      "nama": "Prof. Dr. Lanto Ningrayati Amali, S.Kom, M.Kom., Ph.D",
+      "pendidikan": "S3",
+      "tahun_lulus": "2015",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Pembina Utama Muda",
+      "golongan": "IV/c",
+      "tmt_golongan": "45200",
+      "jabatan": "Guru Besar"
+    },
+    {
+      "no": 5,
+      "nip": "197607232003121002",
+      "nama": "Dr. Ir. Trifandi Lasalewo, S.T, MT",
+      "pendidikan": "S3",
+      "tahun_lulus": "2018",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Utama Muda",
+      "golongan": "IV/c",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 6,
+      "nip": "197304162001121001",
+      "nama": "Dr. Moh. Hidayat Koniyo, S.T, M.Kom",
+      "pendidikan": "S3",
+      "tahun_lulus": "2023",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Utama Muda",
+      "golongan": "IV/c",
+      "tmt_golongan": "45383",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 7,
+      "nip": "196509231994031001",
+      "nama": "Ir. Barry Yusuf Labdul, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2002",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Utama Muda",
+      "golongan": "IV/c",
+      "tmt_golongan": "45383",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 8,
+      "nip": "196807051997021001",
+      "nama": "Dr. Ir. Sardi Salim, M.Pd., IPU.,ASEAN Eng.",
+      "pendidikan": "S3",
+      "tahun_lulus": "2013",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Tkt. I",
+      "golongan": "IV/b",
+      "tmt_golongan": "41000",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 9,
+      "nip": "197404032001121003",
+      "nama": "Dr.Eng. Rifadli Bahsuan, S.T, M.T",
+      "pendidikan": "S3",
+      "tahun_lulus": "",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Tkt. I",
+      "golongan": "IV/b",
+      "tmt_golongan": "42644",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 10,
+      "nip": "197701042001121002",
+      "nama": "Dr. Mohamad Yusuf Tuloli, S.T, M.T",
+      "pendidikan": "S3",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Tkt. I",
+      "golongan": "IV/b",
+      "tmt_golongan": "43922",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 11,
+      "nip": "196811191999031001",
+      "nama": "Dr. Anton Kaharu, S.T, M.T",
+      "pendidikan": "S3",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Tk. I",
+      "golongan": "IV/b",
+      "tmt_golongan": "44287",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 12,
+      "nip": "197201302006041002",
+      "nama": "Dr. Ir.Irwan Wunarlan, S.T., M.Si",
+      "pendidikan": "S3",
+      "tahun_lulus": "2020",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Tk. I",
+      "golongan": "IV/b",
+      "tmt_golongan": "44287",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 13,
+      "nip": "197505182005012002",
+      "nama": "Dr. Hariana, S.Pd, M.Ds",
+      "pendidikan": "S3",
+      "tahun_lulus": "2018",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Pembina Tk. I",
+      "golongan": "IV/b",
+      "tmt_golongan": "44835",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 14,
+      "nip": "197712102001121001",
+      "nama": "Dr. Mukhlisulfatih Latief, S.Kom, M.T",
+      "pendidikan": "S3",
+      "tahun_lulus": "2023",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Tk. I",
+      "golongan": "IV/b",
+      "tmt_golongan": "44835",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 15,
+      "nip": "197101122006042001",
+      "nama": "Dr. Heryati, S.T., M.T",
+      "pendidikan": "S3",
+      "tahun_lulus": "2021",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Pembina Tk. I",
+      "golongan": "IV/b",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 16,
+      "nip": "197704042001121001",
+      "nama": "Dr. Lanto Mohamad Kamil Amali, S.T, M.T",
+      "pendidikan": "S3",
+      "tahun_lulus": "2019",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Tk. I",
+      "golongan": "IV/b",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 17,
+      "nip": "197102222001121001",
+      "nama": "Yasin Mohamad, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2006",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Tk. I",
+      "golongan": "IV/b",
+      "tmt_golongan": "01 Februari 2024",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 18,
+      "nip": "197207062002121002",
+      "nama": "Dr. I Wayan Sudana, S.Sn, M.Sn",
+      "pendidikan": "S3",
+      "tahun_lulus": "2019",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina Tk. I",
+      "golongan": "IV/b",
+      "tmt_golongan": "01 Februari 2024",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 19,
+      "nip": "197204301998022001",
+      "nama": "Yuliyanti Kadir, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2003",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "tmt_golongan": "40452",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 20,
+      "nip": "196605261994031001",
+      "nama": "Drs. Muh Rifai Katili, M.Kom.,Ph.D",
+      "pendidikan": "S3",
+      "tahun_lulus": "2018",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "tmt_golongan": "40452",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 21,
+      "nip": "196404271994032001",
+      "nama": "Ir. Rawiyah Husnan, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2002",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "tmt_golongan": "40634",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 22,
+      "nip": "197408172001121001",
+      "nama": "Agus Lahinta, S.T, M.Kom",
+      "pendidikan": "S2",
+      "tahun_lulus": "2008",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "tmt_golongan": "41000",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 23,
+      "nip": "196310272001121002",
+      "nama": "Dr. Ir. Arqam Laya, S.T.,M.T",
+      "pendidikan": "S3",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "tmt_golongan": "41183",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 24,
+      "nip": "196904071999032001",
+      "nama": "Aryati Alitu, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2004",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "tmt_golongan": "41730",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 25,
+      "nip": "197508232003121002",
+      "nama": "Dr. Arfan Utiarahman, S.T, M.T",
+      "pendidikan": "S3",
+      "tahun_lulus": "2024",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "tmt_golongan": "41730",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 26,
+      "nip": "197603232001121001",
+      "nama": "Dr. Arip Mulyanto, S.Kom, M.Kom",
+      "pendidikan": "S3",
+      "tahun_lulus": "2023",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "tmt_golongan": "42095",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 27,
+      "nip": "197805212002122013",
+      "nama": "Hasdiana, S.Pd, M.Sn",
+      "pendidikan": "S2",
+      "tahun_lulus": "2007",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "tmt_golongan": "42095",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 28,
+      "nip": "197902052005011002",
+      "nama": "Wrastawa Ridwan, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2011",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "tmt_golongan": "42278",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 29,
+      "nip": "197711212003121006",
+      "nama": "Dr.Fadly Achmad, S.T, M.Eng",
+      "pendidikan": "S3",
+      "tahun_lulus": "2009",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "tmt_golongan": "42278",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 30,
+      "nip": "197511242001121001",
+      "nama": "Dr.Dian Novian, S.Kom, M.T",
+      "pendidikan": "S3",
+      "tahun_lulus": "2010",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "tmt_golongan": "43922",
+      "jabatan": "Lektor Kepala"
+    },
+    {
+      "no": 31,
+      "nip": "196212091987031003",
+      "nama": "Drs. Suleman Dangkua, M.Hum",
+      "pendidikan": "S2",
+      "tahun_lulus": "2001",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "38078",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 32,
+      "nip": "197601072006041002",
+      "nama": "Kalih Trumansyahjaya, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2001",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "40817",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 33,
+      "nip": "196506161994121001",
+      "nama": "Dr. Ir. Arifin Matoka, M.T",
+      "pendidikan": "S3",
+      "tahun_lulus": "2017",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "41183",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 34,
+      "nip": "196704212003121001",
+      "nama": "Zainudin Bonok, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2008",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "41183",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 35,
+      "nip": "197502242006042001",
+      "nama": "Dr. Beby Sintia Dewi Banteng, ST, M.Si.P",
+      "pendidikan": "S3",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "41365",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 36,
+      "nip": "197805282003122003",
+      "nama": "Sitti Suhada, S.Kom., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2013",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "41730",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 37,
+      "nip": "196702071992022001",
+      "nama": "Lydia Surijani Tatura, ST, M.Si",
+      "pendidikan": "S2",
+      "tahun_lulus": "2009",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "41730",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 38,
+      "nip": "198007092006041001",
+      "nama": "I Wayan Seriyoga Parta, S.Sn, M.Sn",
+      "pendidikan": "S2",
+      "tahun_lulus": "2010",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "41913",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 39,
+      "nip": "197812082003121002",
+      "nama": "Tajuddin Abdilah, S.Kom, M.Cs",
+      "pendidikan": "S2",
+      "tahun_lulus": "2011",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "41913",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 40,
+      "nip": "197307162005012001",
+      "nama": "Nurnaningsih Nico Abdul, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2010",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "41913",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 41,
+      "nip": "196903132005012002",
+      "nama": "Dr. Indriati Martha Patuti, S.T, M.Eng",
+      "pendidikan": "S3",
+      "tahun_lulus": "2018",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "42278",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 42,
+      "nip": "198010142005011003",
+      "nama": "Abd. Aziz Bouty, S.Kom., M.Kom",
+      "pendidikan": "S2",
+      "tahun_lulus": "2012",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "42278",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 43,
+      "nip": "197812222006041004",
+      "nama": "Dr. Komang Arya Utama, S.T., M.Eng",
+      "pendidikan": "S3",
+      "tahun_lulus": "2023",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "42461",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 44,
+      "nip": "197410192005012001",
+      "nama": "Ernawati, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2011",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "42461",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 45,
+      "nip": "197804302006042001",
+      "nama": "Dr. Rahmani Kadarningsih, S.T., M.T",
+      "pendidikan": "S3",
+      "tahun_lulus": "2018",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "42644",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 46,
+      "nip": "197905152005011002",
+      "nama": "Edi Setiawan, S.Kom., M.Kom",
+      "pendidikan": "S2",
+      "tahun_lulus": "2012",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "42644",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 47,
+      "nip": "197402192003122001",
+      "nama": "Zuhriati A. Djailani, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2011",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "42644",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 48,
+      "nip": "197502142001122004",
+      "nama": "Ade Irawaty Tolago, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2010",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "42644",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 49,
+      "nip": "198006022005012001",
+      "nama": "Elvie Fatmah Mokodongan, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2011",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "43009",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 50,
+      "nip": "197309032006042004",
+      "nama": "Frice Lahmudin Desei, S.T., M.Sc",
+      "pendidikan": "S2",
+      "tahun_lulus": "2011",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "43009",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 51,
+      "nip": "197102182005011001",
+      "nama": "Mohamad Faisal Dunggio, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2012",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "43009",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 52,
+      "nip": "198301132008122003",
+      "nama": "Ir. Stella Junus, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2012",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "43009",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 53,
+      "nip": "197409112008122003",
+      "nama": "Isnawati Mohamad, S.Pd., M.Pd",
+      "pendidikan": "S2",
+      "tahun_lulus": "2012",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "43009",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 54,
+      "nip": "198305142006041004",
+      "nama": "Manda Rohandi, S.Kom, M.Kom",
+      "pendidikan": "S2",
+      "tahun_lulus": "2011",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "43374",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 55,
+      "nip": "198005062005012003",
+      "nama": "Ulin Naini, S.Pd, M.Sn",
+      "pendidikan": "S2",
+      "tahun_lulus": "2010",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tkt. I",
+      "golongan": "III/d",
+      "tmt_golongan": "43739",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 56,
+      "nip": "197611232005011005",
+      "nama": "Syarief Munawar, S.Sn., M.Sn",
+      "pendidikan": "S2",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tk. I",
+      "golongan": "III/d",
+      "tmt_golongan": "43739",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 57,
+      "nip": "197804252003122001",
+      "nama": "Hasmah, S.Pd, M.Sn",
+      "pendidikan": "S2",
+      "tahun_lulus": "2010",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Tk. I",
+      "golongan": "III/d",
+      "tmt_golongan": "43922",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 58,
+      "nip": "198904072015041004",
+      "nama": "Moh. Ramdhan Arif Kaluku, S.Kom., M.Kom",
+      "pendidikan": "S2",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tk.I",
+      "golongan": "III/d",
+      "tmt_golongan": "+",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 59,
+      "nip": "197610192006041001",
+      "nama": "Dr. Buyung Rahmad Machmoed, S.T., M.Eng",
+      "pendidikan": "S2",
+      "tahun_lulus": "2012",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tk.I",
+      "golongan": "III/d",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 60,
+      "nip": "197903312012121001",
+      "nama": "Rahman Takdir, S.Kom., M.Cs",
+      "pendidikan": "S2",
+      "tahun_lulus": "2011",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tk.I",
+      "golongan": "III/d",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 61,
+      "nip": "197801272005011001",
+      "nama": "Rahmat Deddy Rianto Dako, S.T, M.Eng",
+      "pendidikan": "S2",
+      "tahun_lulus": "2017",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tk.I",
+      "golongan": "III/d",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 62,
+      "nip": "198401152008121002",
+      "nama": "Hendra Uloli, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2012",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tk.I",
+      "golongan": "III/d",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 63,
+      "nip": "198110312008121001",
+      "nama": "Salahudin Olii, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2013",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tk.I",
+      "golongan": "III/d",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 64,
+      "nip": "197410222005011002",
+      "nama": "Idham Halid Lahay, S.T, M.Sc",
+      "pendidikan": "S2",
+      "tahun_lulus": "2011",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Tk.I",
+      "golongan": "III/d",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 65,
+      "nip": "197411252001121002",
+      "nama": "Ervan Hasan Harun, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2006",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "39722",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 66,
+      "nip": "197410032001121001",
+      "nama": "Amirudin Yunus Dako, S.T, M.Eng",
+      "pendidikan": "S2",
+      "tahun_lulus": "2009",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "39722",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 67,
+      "nip": "196811302003121001",
+      "nama": "Satar Saman, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "40269",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 68,
+      "nip": "197506242005011003",
+      "nama": "Syahrir Abdussamad, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2011",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "40269",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 69,
+      "nip": "197401162000121001",
+      "nama": "Taufik Ismail Yusuf, S.T, M.Si",
+      "pendidikan": "S2",
+      "tahun_lulus": "2006",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "40452",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 70,
+      "nip": "197411252005011001",
+      "nama": "Arif Supriyatno, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2000",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "40634",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 71,
+      "nip": "197201282005011003",
+      "nama": "Ifan Wiranto, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2010",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "40817",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 72,
+      "nip": "197609292006041004",
+      "nama": "Hasanuddin, S.T., M.Si",
+      "pendidikan": "S2",
+      "tahun_lulus": "2011",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "41000",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 73,
+      "nip": "198004172002122002",
+      "nama": "Lillyan Hadjaratie, S.Kom, M.Si",
+      "pendidikan": "S2",
+      "tahun_lulus": "2011",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "41000",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 74,
+      "nip": "197405132006042007",
+      "nama": "Mursidah Waty, S.Pd, M.Sn",
+      "pendidikan": "S2",
+      "tahun_lulus": "2010",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "41183",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 75,
+      "nip": "197604302005011002",
+      "nama": "Kasmat Saleh Nur, S.T, M.Eng",
+      "pendidikan": "S2",
+      "tahun_lulus": "2011",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "41183",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 76,
+      "nip": "197604272006042002",
+      "nama": "Salmawaty Tansa, S.T, M.Eng",
+      "pendidikan": "S2",
+      "tahun_lulus": "2010",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "41548",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 77,
+      "nip": "197510172005012001",
+      "nama": "Jumiati Ilham, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2010",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "42095",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 78,
+      "nip": "197712132008011006",
+      "nama": "Ir. Muhammad Rijal Syukri, ST, M.Si",
+      "pendidikan": "S2",
+      "tahun_lulus": "2006",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "42095",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 79,
+      "nip": "197004052009121001",
+      "nama": "Dr. Bambang Panji Asmara, S.T, M.T",
+      "pendidikan": "S3",
+      "tahun_lulus": "2024",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "42095",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 80,
+      "nip": "197812252008011001",
+      "nama": "Dr.Jemmy A Pakaja, S.Kom., M.Kom",
+      "pendidikan": "S3",
+      "tahun_lulus": "2023",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "42461",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 81,
+      "nip": "197802052008122003",
+      "nama": "Dr.Sri Sutarni Arifin, S.Hut, M.Si",
+      "pendidikan": "S3",
+      "tahun_lulus": "2022",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "42644",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 82,
+      "nip": "198110232006041002",
+      "nama": "Rampi Yusuf, S.Kom., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "42644",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 83,
+      "nip": "196810102003121001",
+      "nama": "Berni Idji, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2012",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "43009",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 84,
+      "nip": "197111272005011001",
+      "nama": "Muh. Rizal Mahanggi, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2012",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "43191",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 85,
+      "nip": "198301302008122002",
+      "nama": "Roviana H. Dai, S.Kom., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "43191",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 86,
+      "nip": "197401042003121001",
+      "nama": "Arfan Usman Sumaga, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2013",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "44105",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 87,
+      "nip": "198602142015042002",
+      "nama": "Nikmasari Pakaya, S.Kom., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "44470",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 88,
+      "nip": "198512282019032011",
+      "nama": "Sartika Dewi Usman, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "45017",
+      "jabatan": "lektor"
+    },
+    {
+      "no": 89,
+      "nip": "198407272015041001",
+      "nama": "Muhammad Yasser Arafat, S.Pd., M.Pd",
+      "pendidikan": "S2",
+      "tahun_lulus": "2013",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 90,
+      "nip": "198105022008121003",
+      "nama": "Ir. Abdul Rasyid, ST., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2019",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 91,
+      "nip": "199006092018031001",
+      "nama": "Sunardi, S.Pd., M.Pd",
+      "pendidikan": "S2",
+      "tahun_lulus": "2016",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 92,
+      "nip": "198804202019032020",
+      "nama": "Niniek Pratiwi, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2017",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 93,
+      "nip": "198903162019032013",
+      "nama": "Indhitya R. Padiku, S.Kom., M.Kom",
+      "pendidikan": "S2",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 94,
+      "nip": "198401102018031001",
+      "nama": "Jamal Darusalam Giu, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2013",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 95,
+      "nip": "196712202003121001",
+      "nama": "Vierta Ramlan Tallei, S.T, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2010",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 96,
+      "nip": "199005202019031015",
+      "nama": "Alfian Zakaria, S.SI., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2015",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 97,
+      "nip": "198703232019031011",
+      "nama": "Abdi Gunawan Djafar, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2015",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 98,
+      "nip": "198207252008121004",
+      "nama": "Dr. Mohamad Syafri Tuloli, S.T, M.T",
+      "pendidikan": "S3",
+      "tahun_lulus": "2019",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata",
+      "golongan": "III/c",
+      "tmt_golongan": "45200",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 99,
+      "nip": "197301302005012001",
+      "nama": "Nurhajati Tuloli, S.T., M.Eng",
+      "pendidikan": "S2",
+      "tahun_lulus": "2016",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Muda Tkt. I",
+      "golongan": "III/b",
+      "tmt_golongan": "39356",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 100,
+      "nip": "198307202009121005",
+      "nama": "Rochmad Mohammad Thohir Yassin, S.Kom, M.Eng",
+      "pendidikan": "S2",
+      "tahun_lulus": "2009",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tkt. I",
+      "golongan": "III/b",
+      "tmt_golongan": "40148",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 101,
+      "nip": "197011052001121001",
+      "nama": "Iskandar Zulkarnain Nasibu, S.Pd., M.Eng",
+      "pendidikan": "S2",
+      "tahun_lulus": "2016",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tkt. I",
+      "golongan": "III/b",
+      "tmt_golongan": "40269",
+      "jabatan": "Lektor"
+    },
+    {
+      "no": 102,
+      "nip": "198411222019031004",
+      "nama": "Muchlis Polin, S.Kom., M.Com",
+      "pendidikan": "S2",
+      "tahun_lulus": "2018",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "43525",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 103,
+      "nip": "198905262019031006",
+      "nama": "Budiyanto Ahaliki, S.SI., M.Kom",
+      "pendidikan": "S2",
+      "tahun_lulus": "2015",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "43525",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 104,
+      "nip": "198901022015041002",
+      "nama": "Ikhsan Hidayat, S.Kom., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2019",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "43556",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 105,
+      "nip": "199409052020121012",
+      "nama": "Ahmad Azhar Kadim, S.Kom., M.Kom",
+      "pendidikan": "S2",
+      "tahun_lulus": "2019",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44166",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 106,
+      "nip": "199303202022031013",
+      "nama": "Arif Dwinanto, S.Si., M.Pd",
+      "pendidikan": "S2",
+      "tahun_lulus": "2017",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 107,
+      "nip": "199111172022031008",
+      "nama": "Bait Syaiful Rijal, M.Pd",
+      "pendidikan": "S2",
+      "tahun_lulus": "2019",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten ahli"
+    },
+    {
+      "no": 108,
+      "nip": "199403112022032014",
+      "nama": "Dara Fitriani, S.T., M.Sc., M.Eng",
+      "pendidikan": "S2",
+      "tahun_lulus": "2021",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten ahli"
+    },
+    {
+      "no": 109,
+      "nip": "199004212022031007",
+      "nama": "Eka Vickraien Dangkua, S.Kom., M.Kom",
+      "pendidikan": "S2",
+      "tahun_lulus": "2014",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 110,
+      "nip": "199103122022032005",
+      "nama": "Nur Mutmainnah, S.T., M.Ars",
+      "pendidikan": "S2",
+      "tahun_lulus": "2019",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 111,
+      "nip": "198708232022032003",
+      "nama": "Rahmayanti, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2016",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 112,
+      "nip": "199607112022032020",
+      "nama": "Esta Larosa, S.T., S.Pd., M.Pd",
+      "pendidikan": "S2",
+      "tahun_lulus": "2020",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 113,
+      "nip": "199308162022032013",
+      "nama": "Sri Ayu Ashari, S.SI., M.Pd",
+      "pendidikan": "S2",
+      "tahun_lulus": "2020",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 114,
+      "nip": "199407012022031014",
+      "nama": "Asta Juliarman Hatta, S.T., M.Ars",
+      "pendidikan": "S2",
+      "tahun_lulus": "2021",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 115,
+      "nip": "199104052022031008",
+      "nama": "Apriyanto A. Pahrun, M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2019",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 116,
+      "nip": "199307252022032007",
+      "nama": "Hermila A, S.SI., M.Pd",
+      "pendidikan": "S2",
+      "tahun_lulus": "2019",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 117,
+      "nip": "199406112022031010",
+      "nama": "Huzaima Mas'ud,S.Pd., M.Pd",
+      "pendidikan": "S2",
+      "tahun_lulus": "2018",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 118,
+      "nip": "199212202022031004",
+      "nama": "Ihsanulfu'ad Suwandi, S.Pd., M.Pd",
+      "pendidikan": "S2",
+      "tahun_lulus": "2019",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 119,
+      "nip": "199602112022032017",
+      "nama": "Monica Pratiwi, M.Pd.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2019",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 120,
+      "nip": "199112112022032011",
+      "nama": "Muthia, S.SI., M.Pd",
+      "pendidikan": "S2",
+      "tahun_lulus": "2016",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 121,
+      "nip": "198907272022031009",
+      "nama": "Rahmat Taufik R. L Bau, M.Kom",
+      "pendidikan": "S2",
+      "tahun_lulus": "2020",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 122,
+      "nip": "199108272022032011",
+      "nama": "Syafriyani, S.T, M.Ars",
+      "pendidikan": "S2",
+      "tahun_lulus": "2016",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "P",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 123,
+      "nip": "199005162022031007",
+      "nama": "Sugeng Pramudibyo, M.Pd",
+      "pendidikan": "S2",
+      "tahun_lulus": "2015",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 124,
+      "nip": "199301092022031005",
+      "nama": "Wahyu Saputra, S.Pd., M.Arch",
+      "pendidikan": "S2",
+      "tahun_lulus": "2019",
+      "jenis_pegawai": "CPNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "tmt_golongan": "44621",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 125,
+      "nip": "197806172005011003",
+      "nama": "Mirzan Gani, S.T., M.T",
+      "pendidikan": "S2",
+      "tahun_lulus": "2015",
+      "jenis_pegawai": "PNS",
+      "jenis_kelamin": "L",
+      "pangkat": "Penata Muda",
+      "golongan": "III/a",
+      "tmt_golongan": "38353",
+      "jabatan": "Asisten Ahli"
+    },
+    {
+      "no": 126,
+      "nip": "198208112008012006",
+      "nama": "Risnawati Yusuf, S.Pd., M.Pd",
+      "pendidikan": "S2",
+      "tahun_lulus": "",
+      "jenis_pegawai": "",
+      "jenis_kelamin": "",
+      "pangkat": "",
+      "golongan": "",
+      "tmt_golongan": "",
+      "jabatan": ""
+    }
+  ],
+  "tendik_asn": [
+    {
+      "no": 1,
+      "nama": "Dewi Rosita Daud, S.Sos",
+      "status": "PNS",
+      "jabatan": "Kabag Umum",
+      "tugas": ""
+    },
+    {
+      "no": 2,
+      "nama": "Yusuf A. Halid, S.AP",
+      "status": "PNS",
+      "jabatan": "Pengelola BMN",
+      "tugas": "Pengelola BMN"
+    },
+    {
+      "no": 3,
+      "nama": "Jufrianky Saleh",
+      "status": "PNS",
+      "jabatan": "Pengadministrasi BMN",
+      "tugas": "Pembuat SK"
+    },
+    {
+      "no": 4,
+      "nama": "Febriyani Pioke, S.Pd.,M.Pd",
+      "status": "PNS",
+      "jabatan": "Pengelola Kepegawaian",
+      "tugas": "Kepegawaian Fakultas (Alih status ke dosen)"
+    },
+    {
+      "no": 5,
+      "nama": "Yolanda Moh. Djafar, S.K.M",
+      "status": "PNS",
+      "jabatan": "Pengolah Data dan Informasi",
+      "tugas": "Kearsipan"
+    },
+    {
+      "no": 6,
+      "nama": "Nurfaisal Harun, ST,MT",
+      "status": "PNS",
+      "jabatan": "PLP Ahli Pertama",
+      "tugas": "PLP Ahli Pertama"
+    },
+    {
+      "no": 7,
+      "nama": "Fetri I. Labolo, AMD",
+      "status": "PNS",
+      "jabatan": "Bendahara Pengeluaran Pembantu",
+      "tugas": "Bendahara Fakultas"
+    },
+    {
+      "no": 8,
+      "nama": "Abdurrahman Ahmad",
+      "status": "PNS",
+      "jabatan": "Pengadministrasi Umum",
+      "tugas": "Perlengkapan Fakultas"
+    },
+    {
+      "no": 9,
+      "nama": "Arlan Kaharu, ST.,M.Ars",
+      "status": "PNS",
+      "jabatan": "PLP Ahli Pertama",
+      "tugas": "PLP Ahli Pertama"
+    },
+    {
+      "no": 10,
+      "nama": "Hendro Siswanto Hasan",
+      "status": "PNS",
+      "jabatan": "Pengelola Informasi Akademik",
+      "tugas": "Operator Akademik Fakultas"
+    },
+    {
+      "no": 11,
+      "nama": "Muhammad Kautsar, S.Tr.T",
+      "status": "CPNS",
+      "jabatan": "PLP Ahli Pertama",
+      "tugas": "PLP Ahli Pertama"
+    },
+    {
+      "no": 12,
+      "nama": "Lulu Rusliana Arva,ST",
+      "status": "CPNS",
+      "jabatan": "PLP Ahli Pertama",
+      "tugas": "PLP Ahli Pertama"
+    },
+    {
+      "no": 13,
+      "nama": "Wenta Lolo Pryma Tumangger,A.Md",
+      "status": "CPNS",
+      "jabatan": "PLP Ahli Pertama",
+      "tugas": "PLP Ahli Pertama"
+    },
+    {
+      "no": 14,
+      "nama": "Jufadilmuhdi Al-Kasfri, A.Md",
+      "status": "CPNS",
+      "jabatan": "PLP Ahli Pertama",
+      "tugas": "PLP Ahli Pertama"
+    },
+    {
+      "no": 15,
+      "nama": "Ismi Abdul Rauf, ST",
+      "status": "CPNS",
+      "jabatan": "PLP Ahli Pertama",
+      "tugas": "PLP Ahli Pertama"
+    },
+    {
+      "no": 1,
+      "nama": "Wahyu Widiyaningsi Talaa,ST",
+      "status": "PPPK",
+      "jabatan": "Penata Layanan Operasional",
+      "tugas": "Operator dan Admin Teknik Arsitektur"
+    },
+    {
+      "no": 2,
+      "nama": "Gersamata, ST",
+      "status": "PPPK",
+      "jabatan": "Penata Layanan Operasional",
+      "tugas": "Kemahasiswaan Dan Alumni + Operator SKPI"
+    },
+    {
+      "no": 3,
+      "nama": "Woro Ganjar Arum, ST",
+      "status": "PPPK",
+      "jabatan": "Penata Layanan Operasional",
+      "tugas": "Operator dan Admin Teknik elektro"
+    },
+    {
+      "no": 4,
+      "nama": "Yurike Hasan, SH",
+      "status": "PPPK",
+      "jabatan": "Penata Layanan Operasional",
+      "tugas": "Sekertaris Pimpinan"
+    },
+    {
+      "no": 5,
+      "nama": "Rifki Setiawan,SE",
+      "status": "PPPK",
+      "jabatan": "Penata Layanan Operasional",
+      "tugas": "Akademik Fakultas"
+    },
+    {
+      "no": 6,
+      "nama": "Ridwan Kadir,ST",
+      "status": "PPPK",
+      "jabatan": "Penata Layanan Operasional",
+      "tugas": "Tenaga Laboran Teknik Elektro"
+    },
+    {
+      "no": 7,
+      "nama": "Fardiyansyah Pakaya, S.Pd",
+      "status": "PPPK",
+      "jabatan": "Penata Layanan Operasional",
+      "tugas": "Tenaga Laboran Teknik Industrio"
+    },
+    {
+      "no": 8,
+      "nama": "Intan Abdullah, S.Pd",
+      "status": "PPPK",
+      "jabatan": "Penata Layanan Operasional",
+      "tugas": "Operator dan Admin PSR"
+    },
+    {
+      "no": 9,
+      "nama": "Pepy Flora Adam, S,Pd",
+      "status": "PPPK",
+      "jabatan": "Penata Layanan Operasional",
+      "tugas": "Operator dan Admin PPI"
+    },
+    {
+      "no": 10,
+      "nama": "Satriana Balise, S.Pd",
+      "status": "PPPK",
+      "jabatan": "Pengadministrasi Perkantoran",
+      "tugas": "Tenaga Laboran PSR"
+    },
+    {
+      "no": 11,
+      "nama": "Sry Cameliawaty Ismail",
+      "status": "PPPK",
+      "jabatan": "Pengadministrasi Perkantoran",
+      "tugas": "Operator dan Admin Teknik Industri"
+    },
+    {
+      "no": 12,
+      "nama": "Bambang Irawan,A.Md",
+      "status": "PPPK",
+      "jabatan": "Pengadministrasi Perkantoran",
+      "tugas": "Ruang Baca Fakultas"
+    },
+    {
+      "no": 13,
+      "nama": "Hafid Sidiq",
+      "status": "PPPK",
+      "jabatan": "Operator Layanan Operasional",
+      "tugas": "Kemahasiswaan dan Alumni"
+    },
+    {
+      "no": 14,
+      "nama": "Raif Latongko",
+      "status": "PPPK",
+      "jabatan": "Operator Layanan Operasional",
+      "tugas": "Tenaga Laboran Teknik Elektro"
+    },
+    {
+      "no": 15,
+      "nama": "Handirusrati Yunus",
+      "status": "PPPK",
+      "jabatan": "Operator Layanan Operasional",
+      "tugas": "RBA Fakultas"
+    },
+    {
+      "no": 16,
+      "nama": "Rolan Abdullah",
+      "status": "PPPK",
+      "jabatan": "Pengemudi Sopir",
+      "tugas": "Sopir Pimpinan"
+    },
+    {
+      "no": 17,
+      "nama": "Fadli Putra Abdul",
+      "status": "PPPK",
+      "jabatan": "Sekertaris Pimpinan",
+      "tugas": "Sekertaris Pimpinan"
+    }
+  ],
+  "tugas_sections": [
+    {
+      "section": "A. PRANATA LABORATORIUM PENDIDIKAN (PLP) DAN LABORAN",
+      "items": [
+        {
+          "no": 1,
+          "nama": "Arlan Kaharu, ST.,M.Ars",
+          "tempat_tugas": "Laboratorium Teknik  Arsitektur",
+          "ket": "PLP"
+        },
+        {
+          "no": 2,
+          "nama": "Nurfaisal Harun, ST,MT",
+          "tempat_tugas": "Laboratorium Teknik Industri",
+          "ket": "PLP"
+        },
+        {
+          "no": 3,
+          "nama": "Muhammad Kautsar, S.Tr.T",
+          "tempat_tugas": "Laboratorium Teknik Industri",
+          "ket": "PLP"
+        },
+        {
+          "no": 4,
+          "nama": "Ismi Abdul Rauf, ST",
+          "tempat_tugas": "Laboratorium Teknik Industri",
+          "ket": "PLP"
+        },
+        {
+          "no": 5,
+          "nama": "Lulu Rusliana Arva,ST",
+          "tempat_tugas": "Laboratorium Teknik Sipil",
+          "ket": "PLP"
+        },
+        {
+          "no": 6,
+          "nama": "Wenta L. P. Tumangger,A.Md",
+          "tempat_tugas": "Laboratorium Teknik Sipil",
+          "ket": "PLP"
+        },
+        {
+          "no": 7,
+          "nama": "Jufadilmuhdi Al-Kasfri, A.Md",
+          "tempat_tugas": "Laboratorium Teknik Sipil",
+          "ket": "PLP"
+        },
+        {
+          "no": 8,
+          "nama": "Abdul Kadir Djou, ST",
+          "tempat_tugas": "Laboratorium Teknik Sipil",
+          "ket": ""
+        },
+        {
+          "no": 9,
+          "nama": "Beryl Abdulkarim, ST",
+          "tempat_tugas": "Laboratorium Teknik Sipil",
+          "ket": ""
+        },
+        {
+          "no": 10,
+          "nama": "Mohamad R. Daeng Taleba, ST",
+          "tempat_tugas": "Laboratorium Teknik Sipil",
+          "ket": ""
+        },
+        {
+          "no": 11,
+          "nama": "Zulkifli Podungge, ST",
+          "tempat_tugas": "Laboratorium Teknik Sipil",
+          "ket": ""
+        },
+        {
+          "no": 12,
+          "nama": "Muhammad Rifandy Ismail, S.Kom",
+          "tempat_tugas": "Laboratorium Teknik Informatika",
+          "ket": ""
+        },
+        {
+          "no": 13,
+          "nama": "Ridwan Kadir,ST",
+          "tempat_tugas": "Laboratorium Teknik Elektro",
+          "ket": ""
+        },
+        {
+          "no": 14,
+          "nama": "Raif Latongko",
+          "tempat_tugas": "Laboratorium Teknik Elektro",
+          "ket": ""
+        },
+        {
+          "no": 15,
+          "nama": "Fardiyansyah Pakaya, S.Pd",
+          "tempat_tugas": "Laboratorium Teknik Industri",
+          "ket": ""
+        },
+        {
+          "no": 16,
+          "nama": "Satriana Balise, S.Pd",
+          "tempat_tugas": "Laboratorium PSR",
+          "ket": ""
+        },
+        {
+          "no": 17,
+          "nama": "Uga Theresia Gobel, S.Kom",
+          "tempat_tugas": "Laboratorium Teknik Informatika",
+          "ket": ""
+        }
+      ]
+    },
+    {
+      "section": "B. OPERATOR DAN ADMIN  JURUSAN",
+      "items": [
+        {
+          "no": 1,
+          "nama": "Nopita Y. Panani,SH",
+          "tempat_tugas": "Jurusan Teknik Sipil",
+          "ket": "Operattor dan Admin"
+        },
+        {
+          "no": 2,
+          "nama": "Woro Ganjar Arum, ST",
+          "tempat_tugas": "Jurusan Teknik Elektro",
+          "ket": "Operattor dan Admin"
+        },
+        {
+          "no": 3,
+          "nama": "Muhammad Nur Iman Abas, S.Pd",
+          "tempat_tugas": "Jurusan Teknik Informatika",
+          "ket": "Operator"
+        },
+        {
+          "no": 4,
+          "nama": "Hendro Siswanto Hasan",
+          "tempat_tugas": "Fakultas",
+          "ket": "Operator Akademik"
+        },
+        {
+          "no": 5,
+          "nama": "Sry Cameliawaty Ismail",
+          "tempat_tugas": "Jurusan Teknik Industri",
+          "ket": "Admin dan Operator"
+        },
+        {
+          "no": 6,
+          "nama": "Intan Abdullah, S.Pd",
+          "tempat_tugas": "Jurusan Seni Rupa dan Desain",
+          "ket": "Operattor dan Admin"
+        },
+        {
+          "no": 7,
+          "nama": "Wahyu Widiyaningsi Talaa,ST",
+          "tempat_tugas": "Jurusan Teknik Arsitektur",
+          "ket": "Operattor dan Admin"
+        },
+        {
+          "no": 8,
+          "nama": "Alviana Krismawati, ST",
+          "tempat_tugas": "Prodi PWK",
+          "ket": "Admin PWK"
+        },
+        {
+          "no": 9,
+          "nama": "Pepy Flora Adam, S,Pd",
+          "tempat_tugas": "Prodi PPI",
+          "ket": "Operator dan Admin"
+        }
+      ]
+    },
+    {
+      "section": "C. FAKULTAS",
+      "items": []
+    },
+    {
+      "section": "C.1. UMUM DAN PERLENGKAPAN",
+      "items": [
+        {
+          "no": 1,
+          "nama": "Abdurrahman Ahmad",
+          "beban_kerja": "Perlengkapan",
+          "ket": "Tambah perintah atasan lainnya"
+        },
+        {
+          "no": 2,
+          "nama": "Yusuf A. Halid, S.AP",
+          "beban_kerja": "Pengelola BMN",
+          "ket": "Tambah perintah atasan lainnya"
+        },
+        {
+          "no": 3,
+          "nama": "Jufrianky Saleh",
+          "beban_kerja": "Pembuatan SK",
+          "ket": "Tambah perintah atasan lainnya"
+        },
+        {
+          "no": 4,
+          "nama": "Yolanda Moh. Djafar, S.K.M",
+          "beban_kerja": "Kearsipan",
+          "ket": "Tambah perintah atasan lainnya"
+        },
+        {
+          "no": 5,
+          "nama": "Ria Septiani Ishak, SE",
+          "beban_kerja": "Surat Tugas, Agenda Surat",
+          "ket": "Tambah perintah atasan lainnya"
+        },
+        {
+          "no": 6,
+          "nama": "Yurike Hasan, SH",
+          "beban_kerja": "Sekertaris Pimpinan",
+          "ket": "Tambah perintah atasan lainnya"
+        },
+        {
+          "no": 7,
+          "nama": "Fadli Putra Abdul",
+          "beban_kerja": "Sekertaris Pimpinan",
+          "ket": "Tambah perintah atasan lainnya"
+        },
+        {
+          "no": 8,
+          "nama": "Rolan Abdullah",
+          "beban_kerja": "Sopir Pimpinan",
+          "ket": "Tambah perintah atasan lainnya"
+        }
+      ]
+    },
+    {
+      "section": "C.2. KEPEGAWAIAN,AKADEMIK,KEMAHASISWAAN,PERPUSTAAKAAN,KEUANGAN,RBA",
+      "items": [
+        {
+          "no": 1,
+          "nama": "Dewi Rosita Daud, S.Sos",
+          "beban_kerja": "Kabag Umum",
+          "ket": "Tambah perintah atasan lainnya"
+        },
+        {
+          "no": 2,
+          "nama": "Febriyani Pioke, S.Pd.,M.Pd",
+          "beban_kerja": "Kepegawaian Fakultas",
+          "ket": "Alih Status ke dosen"
+        },
+        {
+          "no": 3,
+          "nama": "Fetri I. Labolo, AMD",
+          "beban_kerja": "Fakultas Bendahara",
+          "ket": "Tambah perintah atasan lainnya"
+        },
+        {
+          "no": 4,
+          "nama": "Handirusrati Yunus",
+          "beban_kerja": "RBA Fakultas",
+          "ket": "Tambah perintah atasan lainnya"
+        },
+        {
+          "no": 5,
+          "nama": "Gersamata, ST",
+          "beban_kerja": "Kemahasiswaan Fakultas",
+          "ket": "Tambah perintah atasan lainnya"
+        },
+        {
+          "no": 6,
+          "nama": "Hafid Sidiq",
+          "beban_kerja": "Kemahasiswaan Fakultas",
+          "ket": "Tambah perintah atasan lainnya"
+        },
+        {
+          "no": 7,
+          "nama": "Bambang Irawan,A.Md",
+          "beban_kerja": "Ruang Baca Fakultas",
+          "ket": "Tambah perintah atasan lainnya"
+        },
+        {
+          "no": 8,
+          "nama": "Rifki Setiawan,SE",
+          "beban_kerja": "Akademik Fakultas",
+          "ket": "Tambah perintah atasan lainnya"
+        }
+      ]
+    }
+  ]
+};
+
+  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  const dropdowns = document.querySelectorAll('.dropdown');
+
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+    });
+  }
+
+  // Dropdown behavior (click for mobile/touch)
+  dropdowns.forEach((dropdown) => {
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', (e) => {
+      const isMobile = window.matchMedia('(max-width: 860px)').matches;
+      if (isMobile) {
+        e.preventDefault();
+        const willOpen = !dropdown.classList.contains('open');
+        dropdowns.forEach(d => d.classList.remove('open'));
+        if (willOpen) dropdown.classList.add('open');
+      }
+    });
+  });
+
+  // Close mobile menu when clicking a normal link
+  document.querySelectorAll('.nav-menu a').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (window.matchMedia('(max-width: 860px)').matches) {
+        navMenu?.classList.remove('open');
+        navToggle?.setAttribute('aria-expanded', 'false');
+        dropdowns.forEach(d => d.classList.remove('open'));
+      }
+    });
+  });
+
+  // Hero slider
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsWrap = document.getElementById('heroDots');
+  const prevBtn = document.getElementById('heroPrev');
+  const nextBtn = document.getElementById('heroNext');
+  let current = 0;
+  let timer;
+
+  function renderDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    slides.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', `Slide ${i + 1}`);
+      b.addEventListener('click', () => goTo(i, true));
+      dotsWrap.appendChild(b);
+    });
+  }
+
+  function updateSlider() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    if (dotsWrap) {
+      dotsWrap.querySelectorAll('button').forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+  }
+
+  function goTo(index, manual = false) {
+    if (!slides.length) return;
+    current = (index + slides.length) % slides.length;
+    updateSlider();
+    if (manual) restartAuto();
+  }
+
+  function next(manual = false) { goTo(current + 1, manual); }
+  function prev(manual = false) { goTo(current - 1, manual); }
+
+  function startAuto() {
+    timer = setInterval(() => next(false), 5000);
+  }
+  function restartAuto() {
+    clearInterval(timer);
+    startAuto();
+  }
+
+  if (slides.length) {
+    renderDots();
+    updateSlider();
+    startAuto();
+    nextBtn?.addEventListener('click', () => next(true));
+    prevBtn?.addEventListener('click', () => prev(true));
+  }
+
+  // Stats counter animation
+  const counters = document.querySelectorAll('.stat-value[data-target]');
+  let statsDone = false;
+
+  function animateCounters() {
+    counters.forEach((el) => {
+      const target = parseInt(el.dataset.target || '0', 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400;
+      const start = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.floor(eased * target);
+        el.textContent = value.toLocaleString('id-ID') + (progress === 1 ? suffix : '');
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  const statsSection = document.querySelector('.vision-stats');
+  if (statsSection && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !statsDone) {
+          statsDone = true;
+          animateCounters();
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    obs.observe(statsSection);
+  } else {
+    animateCounters();
+  }
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-list a.nav-link[href^="#"]');
+  function setActiveLink() {
+    let activeId = '';
+    const offset = 120;
+    sections.forEach((sec) => {
+      const top = sec.offsetTop - offset;
+      if (window.scrollY >= top) activeId = sec.id;
+    });
+    navLinks.forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      const match = href === `#${activeId}`;
+      link.classList.toggle('active', match);
+    });
+  }
+  window.addEventListener('scroll', setActiveLink, { passive: true });
+  setActiveLink();
+
+  // Back to top
+  const toTop = document.getElementById('toTop');
+  function toggleTop() {
+    if (!toTop) return;
+    toTop.classList.toggle('show', window.scrollY > 400);
+  }
+  window.addEventListener('scroll', toggleTop, { passive: true });
+  toTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  toggleTop();
+});
+
+
+  // Kepegawaian data rendering
+  (function initKepegawaian() {
+    const root = document.getElementById('kepegawaian');
+    const data = window.FT_DATA;
+    if (!root || !data) return;
+
+    const tabs = Array.from(root.querySelectorAll('.tab-btn'));
+    const panels = Array.from(root.querySelectorAll('.tab-panel'));
+    const searchInput = document.getElementById('dataSearch');
+    const metaBar = document.getElementById('dataMetaBar');
+
+    let activeTab = 'dosen';
+
+    function esc(s) {
+      return String(s == null ? '' : s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function excelSerialToDate(val) {
+      if (val == null || val === '') return '';
+      const s = String(val).trim();
+      if (!/^\d+(\.0+)?$/.test(s)) return s;
+      const n = Math.floor(Number(s));
+      if (n < 20000 || n > 60000) return s;
+      const ms = Math.round((n - 25569) * 86400 * 1000);
+      const d = new Date(ms);
+      if (isNaN(d.getTime())) return s;
+      return d.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
+    }
+
+    function fmtVal(v) {
+      const s = String(v == null ? '' : v).trim();
+      if (!s) return '-';
+      if (/^\d{5}(\.0+)?$/.test(s)) return excelSerialToDate(s);
+      return s;
+    }
+
+    function matches(item, q, fields) {
+      if (!q) return true;
+      const hay = fields.map(f => (item && item[f] != null ? String(item[f]) : '')).join(' ').toLowerCase();
+      return hay.includes(q);
+    }
+
+    function renderTable(tbodyId, rows, cols, fields, q) {
+      const tbody = document.getElementById(tbodyId);
+      if (!tbody) return 0;
+      const filtered = rows.filter(r => matches(r, q, fields));
+      if (!filtered.length) {
+        tbody.innerHTML = `<tr><td colspan="${cols.length}" class="empty-state">Tidak ada data yang cocok.</td></tr>`;
+        return 0;
+      }
+      tbody.innerHTML = filtered.map(r => {
+        const tds = cols.map(c => `<td>${esc(c(r))}</td>`).join('');
+        return `<tr>${tds}</tr>`;
+      }).join('');
+      return filtered.length;
+    }
+
+    function renderDosen(q) {
+      const rows = data.dosen || [];
+      const count = renderTable('tbody-dosen', rows,
+        [
+          r => r.no ?? '',
+          r => r.nip || '-',
+          r => r.nama || '-',
+          r => r.pendidikan || '-',
+          r => r.pangkat || '-',
+          r => r.golongan || '-',
+          r => r.jabatan || '-',
+          r => r.jenis_pegawai || '-',
+        ],
+        ['nip','nama','pendidikan','pangkat','golongan','jabatan','jenis_pegawai'], q);
+      return { shown: count, total: rows.length, label: 'dosen' };
+    }
+
+    function renderSerdos(q) {
+      const rows = data.serdos || [];
+      const count = renderTable('tbody-serdos', rows,
+        [r => r.no ?? '', r => r.nip || '-', r => r.nama || '-', r => r.ket || '-'],
+        ['nip','nama','ket'], q);
+      return { shown: count, total: rows.length, label: 'penerima serdos' };
+    }
+
+    function renderGuruBesar(q) {
+      const rows = data.guru_besar || [];
+      const count = renderTable('tbody-guru_besar', rows,
+        [r => r.no ?? '', r => r.nip || '-', r => r.nama || '-', r => r.ket || '-'],
+        ['nip','nama','ket'], q);
+      return { shown: count, total: rows.length, label: 'penerima tunjangan guru besar' };
+    }
+
+    function renderTendik(q) {
+      const rows = data.tendik_asn || [];
+      const count = renderTable('tbody-tendik_asn', rows,
+        [r => r.no ?? '', r => r.nama || '-', r => r.status || '-', r => r.jabatan || '-', r => r.tugas || '-'],
+        ['nama','status','jabatan','tugas'], q);
+      return { shown: count, total: rows.length, label: 'tendik ASN' };
+    }
+
+    function renderTugas(q) {
+      const container = document.getElementById('tugasContainer');
+      if (!container) return { shown: 0, total: 0, label: 'penugasan' };
+      const sections = (data.tugas_sections || []).filter(sec => (sec.items || []).length > 0);
+      let shown = 0, total = 0;
+      const html = sections.map(sec => {
+        const items = sec.items || [];
+        total += items.length;
+        const filtered = q ? items.filter(it => {
+          const hay = [it.nama, it.tempat_tugas, it.beban_kerja, it.ket].map(x => String(x || '')).join(' ').toLowerCase();
+          return hay.includes(q);
+        }) : items;
+        shown += filtered.length;
+        const isC = /^C\./.test(String(sec.section || ''));
+        const h3 = isC ? 'Beban Kerja/Tugas' : 'Tempat Tugas';
+        const rowsHtml = filtered.length ? filtered.map(it => {
+          const col3 = isC ? (it.beban_kerja || '-') : (it.tempat_tugas || '-');
+          return `<tr><td>${esc(it.no ?? '')}</td><td>${esc(it.nama || '-')}</td><td>${esc(col3)}</td><td>${esc(it.ket || '-')}</td></tr>`;
+        }).join('') : `<tr><td colspan="4" class="empty-state">Tidak ada data yang cocok.</td></tr>`;
+        return `<div class="tugas-section">
+          <h3>${esc(sec.section || 'Bagian')}</h3>
+          <div class="table-wrap"><table class="data-table"><thead><tr><th>No</th><th>Nama</th><th>${h3}</th><th>Keterangan</th></tr></thead><tbody>${rowsHtml}</tbody></table></div>
+        </div>`;
+      }).join('');
+      container.innerHTML = html || '<div class="empty-state">Data tidak tersedia.</div>';
+      return { shown, total, label: 'entri tugas/beban kerja' };
+    }
+
+    function renderActive() {
+      const q = (searchInput && searchInput.value ? searchInput.value : '').trim().toLowerCase();
+      let res = { shown: 0, total: 0, label: '' };
+      if (activeTab === 'dosen') res = renderDosen(q);
+      else if (activeTab === 'serdos') res = renderSerdos(q);
+      else if (activeTab === 'guru_besar') res = renderGuruBesar(q);
+      else if (activeTab === 'tendik_asn') res = renderTendik(q);
+      else if (activeTab === 'tugas') res = renderTugas(q);
+      if (metaBar) {
+        const qnote = q ? ` (filter: "${searchInput.value.trim()}")` : '';
+        metaBar.textContent = `Menampilkan ${res.shown} dari ${res.total} ${res.label}${qnote}.`;
+      }
+    }
+
+    function setTab(tab, doScroll) {
+      if (!tab) return;
+      activeTab = tab;
+      tabs.forEach(btn => {
+        const on = btn.dataset.tab === tab;
+        btn.classList.toggle('active', on);
+        btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panels.forEach(p => p.classList.toggle('active', p.dataset.panel === tab));
+      renderActive();
+      if (doScroll) root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    tabs.forEach(btn => btn.addEventListener('click', () => setTab(btn.dataset.tab, false)));
+    if (searchInput) searchInput.addEventListener('input', renderActive);
+
+    document.querySelectorAll('[data-open-tab]').forEach(el => {
+      el.addEventListener('click', () => {
+        const tab = el.getAttribute('data-open-tab');
+        if (tab) setTimeout(() => setTab(tab, false), 0);
+      });
+    });
+
+    setTab('dosen', false);
+  })();
+
+  </script>
+</body>
+</html>
